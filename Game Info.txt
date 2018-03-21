@@ -1,0 +1,15 @@
+Creature Types		Regions and Type				God Class Bosses
+Demon			Burning Plains(fire)				Fire God Enracu
+Beast			Drake Mines(earth)				Moutain God
+Shade			Broken Sky Peak(air)				Sea God Friga
+Construct		Withering Swamps(water-waste)			Neratie, Godess of Wind
+Serpent			Shattered Wasteland(Waste)			Haster, the Exiled God
+Human			Kingdom of Eternal Shadows(darkness-shadows)
+Spirit
+Dragon
+Demon-Beast
+God
+Unknown
+Abomination
+Shadow
+Undead
