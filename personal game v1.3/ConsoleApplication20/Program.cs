@@ -2852,10 +2852,265 @@ namespace Shadow_Warriors
 			string resistance = "";
 			if (creatureType == "Beast")
 			{
-				resistance = "";
+				if (creatureName == "Ash Wolf")
+				{
+					resistance = "Fire";
+				}
+				else if (creatureName == "Obsidian Scorpion")
+				{
+					resistance = "Earth";
+				}
+				else if (creatureName == "Blazing Goblin")
+				{
+					resistance = "None";
+				}
+				else if (creatureName == "Terashin, Lord of The Deep")
+				{
+					resistance = "Fire";
+				}
+				else if (creatureName == "Shrigin, the Deep Lurker")
+				{
+					resistance = "Shadow-Darkness";
+				}
+			}
+			else if (creatureType == "Demon")
+			{
+				if (creatureName == "Fire Imp")
+				{
+					resistance = "Earth";
+				}
+				else if (creatureName == "Rage Demon")
+				{
+					resistance = "Fire";
+				}
+				else if (creatureName == "Terrifying Bunny of The Pit")
+				{
+					resistance = "Pure";
+				}
+				else if (creatureName == "Flame of Chaos")
+				{
+					resistance = "Shadow";
+				}
+				else if (creatureName == "Demon of The Forge")
+				{
+					resistance = "Fire";
+				}
+				else if (creatureName == "Malum, Heart of Darkness")
+				{
+					resistance = "Pure";
+				}
+			}
+			else if (creatureType == "Shade")
+			{
+				if (creatureName == "Black Flame Shade")
+				{
+					resistance = "Fire-Shadow";
+				}
+			}
+			else if (creatureType == "Construct")
+			{
+				if (creatureName == "Molten Golem")
+				{
+					resistance = "Fire-Earth";
+				}
+				else if (creatureName == "Wall Crawler")
+				{
+					resistance = "Ice";
+				}
+				else if (creatureName == "Mad man's Puzzle Cube")
+				{
+					resistance = "None";
+				}
+				else if (creatureName == "Sentient Dynamite")
+				{
+					resistance = "Earth";
+				}
+				else if (creatureName == "Hasharida, Herald of Fire")
+				{
+					resistance = "Fire";
+				}
+				else if (creatureName == "Blade of Eternal Chaos")
+				{
+					resistance = "Shadow-Darkness";
+				}
+			}
+			else if (creatureType == "Serpent")
+			{
+				if (creatureName == "Magma Serpent")
+				{
+					resistance = "Fire-Earth";
+				}
+				else if (creatureName == "Astriqa, Ancient Leviathon")
+				{
+					resistance = "Darkness-Water";
+				}
+			}
+			else if (creatureType == "Human")
+			{
+				if (creatureName == "Scorched Knight")
+				{
+					resistance = "Fire";
+				}
+				else if (creatureName == "Enraged Shaman")
+				{
+					resistance = "Fire-Lightning";
+				}
+				else if (creatureName == "Hunter of the Burnt Ruin")
+				{
+					resistance = "Fire";
+				}
+				else if (creatureName == "Prince of the Burning Kingdom")
+				{
+					resistance = "Water";
+				}
+				else if (creatureName == "Ancient Forge Assistant")
+				{
+					resistance = "Earth-Fire";
+				}
+				else if (creatureName == "Kingdom Guard")
+				{
+					resistance = "Shadow";
+				}
+				else if (creatureName == "Weaver of Shadows")
+				{
+					resistance = "Fire";
+				}
+				else if (creatureName == "Eternal Flame Knights")
+				{
+					resistance = "Fire";
+				}
+				else if (creatureName == "True Forge Master")
+				{
+					resistance = "Fire-Earth";
+				}
+				else if (creatureName == "Iteath, Bringer of Chaos")
+				{
+					resistance = "All";
+				}
+				else if (creatureName == "Arcien, the Shadow General")
+				{
+					resistance = "Shadow-Darkness";
+				}
+			}
+			else if (creatureType == "Spirit")
+			{
+				if (creatureName == "Banshee of The Dark Flame")
+				{
+					resistance = "Fire-Corruption";
+				}
+				else if (creatureName == "Corrupted Fire Spirit")
+				{
+					resistance = "Pure-Water";
+				}
+				else if (creatureName == "Tormented Soul")
+				{
+					resistance = "Darkness";
+				}
+				else if (creatureName == "Phantom Architect")
+				{
+					resistance = "Earth-Fire";
+				}
+				else if (creatureName == "Lurking Shade")
+				{
+					resistance = "Fire";
+				}
+			}
+			else if (creatureType == "Dragon")
+			{
+				if (creatureName == "Ash Storm Dragon")
+				{
+					resistance = "Air-Fire";
+				}
+				else if (creatureName == "Cinder Winged Horror")
+				{
+					resistance = "Fire";
+				}
+				else if (creatureName == "Flame Clawed Drake")
+				{
+					resistance = "Earth";
+				}
+				else if (creatureName == "Caelumanura, Ruler of the Stars")
+				{
+					resistance = "All";
+				}
+			}
+			else if (creatureType == "Demon-Beast")
+			{
+				if (creatureName == "Terror of The Deep")
+				{
+					resistance = "Fire-Darkness";
+				}
 			}
 			else if (creatureType == "God")
 			{
+				if (creatureName == "Fire God Enracu")
+				{
+					resistance = "Waste";
+				}
+				else if (creatureName == "Mountain God")
+				{
+					resistance = "Air";
+				}
+				else if (creatureName == "Sea Godess Friga")
+				{
+					resistance = "Fire";
+				}
+				else if (creatureName == "Neratie, Godess of Wind")
+				{
+					resistance = "Earth";
+				}
+				else if (creatureName == "Haster, the Exiled God")
+				{
+					resistance = "Shadow-Darkness";
+				}
+			}
+			else if (creatureType == "Unknown")
+			{
+				if (creatureName == "Mind Warper")
+				{
+					resistance = "All";
+				}
+				else if (creatureName == "Corupting Mist")
+				{
+					resistance = "Fire-Darkness";
+				}
+				else if (creatureName == "Heart Eater")
+				{
+					resistance = "Fire";
+				}
+				else if (creatureName == "Dunwitch Horror")
+				{
+					resistance = "Waste";
+				}
+				else if (creatureName == "Dream Stalker")
+				{
+					resistance = "Earth";
+				}
+				else if (creatureName == "Nerash, Eternity Devourer")
+				{
+					resistance = "Time";
+				}
+			}
+			else if (creatureType == "Abomination")
+			{
+				if (creatureName == "Twisted Shadows")
+				{
+					resistance = "all";
+				}
+			}
+			else if (creatureType == "Shadow")
+			{
+				if (creatureName == "Darkness Walker")
+				{
+					resistance = "Darkness";
+				}
+			}
+			else if (creatureType == "Undead")
+			{
+				if (creatureName == "Risen Drake")
+				{
+					resistance = "Fire-Ice";
+				}
 			}
 			return resistance;
 		}
@@ -2893,9 +3148,25 @@ namespace Shadow_Warriors
 				}
 				else if (creatureType == "God")
 				{
-					if (creatureName == "Neratie, Godess of Wind")
+					if (creatureName == "Fire God Enracu")
 					{
-						weakness = "Corruption";
+						weakness = "Water";
+					}
+					else if (creatureName == "Mountain God")
+					{
+						weakness = "Fire";
+					}
+					else if (creatureName == "Sea Godess Friga")
+					{
+						weakness = "Waste";
+					}
+					else if (creatureName == "Neratie, Godess of Wind")
+					{
+						weakness = "Lightning";
+					}
+					else if (creatureName == "Haster, the Exiled God")
+					{
+						weakness = "Pure";
 					}
 				}
 				else if (creatureType == "Unknown")
