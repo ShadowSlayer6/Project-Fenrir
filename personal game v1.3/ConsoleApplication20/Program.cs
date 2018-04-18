@@ -44,7 +44,7 @@ namespace Shadow_Warriors
 				bool skip = false;
 				bool adminAccess = false;
 				string shadeKing13 = "False Shadow";
-				bool full_game = true;
+				bool full_game = false;
 				int magic_Energy = magicAp;
 				bool staff_equiped = false;
 				bool sword_equiped = false;
@@ -71,6 +71,7 @@ namespace Shadow_Warriors
 				string choice;
 				double type = 0;
 				#endregion
+				#region stuff
 				while (true)
 				{
 					Console.Clear();
@@ -196,6 +197,7 @@ namespace Shadow_Warriors
 								full_game = true;
 								Console.ReadLine();
 							}
+#endregion
 							#region Current Access
 							#region Mage
 							else if (choice == A)
@@ -212,8 +214,15 @@ namespace Shadow_Warriors
 									Console.WriteLine("B. Shadow");
 									Console.WriteLine("C. Storm");
 									Console.WriteLine("D. Necromancy");
-									Console.WriteLine("E. Transformation");
-									Console.WriteLine("F. Back");
+									if (full_game == true)
+									{
+										Console.WriteLine("E. Transformation");//temp block
+										Console.WriteLine("F. Back");
+									}
+									else
+									{
+										Console.WriteLine("E. Back");
+									}
 									choice = Console.ReadLine();
 									#region Time
 									if (choice == "Shadow Slayer")
@@ -288,7 +297,7 @@ namespace Shadow_Warriors
 									}
 									#endregion
 									#region Change
-									else if (choice == E || choice == "e")
+									else if (choice == E && full_game == true|| choice == "e" && full_game == true)
 									{
 										staff_equiped = true;
 										Class_Name = "Transformation Mage";
@@ -300,7 +309,7 @@ namespace Shadow_Warriors
 										break;
 									}
 									#endregion
-									else if (choice == F || choice == "f")
+									else if (choice == F || choice == "f" || choice == E && full_game == false || choice == "e" && full_game == false)
 									{
 										break;
 									}
@@ -312,7 +321,7 @@ namespace Shadow_Warriors
 										Console.Clear();
 									}
 								}
-								if (choice == A || choice == "a" || choice == B || choice == "b" || choice == C || choice == "c" || choice == D || choice == "d" || choice == E || choice == "e")
+								if (choice == A || choice == "a" || choice == B || choice == "b" || choice == C || choice == "c" || choice == D || choice == "d" || choice == E && full_game == true || choice == "e" && full_game == true)
 								{
 									break;
 								}
@@ -820,6 +829,108 @@ namespace Shadow_Warriors
 							Console.WriteLine("Due to this game currently being in text form only this demo will only be to show off the combat and inventory system.");
 							Console.WriteLine("you have my apologies as the game has no images or world exploration yet.");
 							Console.WriteLine("I spent the majority of my time working on story and creature creation and design.");
+							Console.WriteLine("You will fight several creatures from the game and a boss. I hope you enjoy it.");
+							Console.WriteLine("<Tap Enter to continue>");
+							Console.ReadLine();
+							while (true)
+							{
+								Console.Clear();
+								Console.WriteLine("Please select your weapon");
+								Console.WriteLine();
+								Console.WriteLine("1. Iron Oak Staff");
+								Console.WriteLine("2. Black Steel Dagger");
+								Console.WriteLine("3. Old Rusted Sword");
+								Console.WriteLine("4. Dulled Mace");
+								Console.WriteLine("5. Thief's Shortblade");
+								Console.WriteLine("6. Unarmed");
+								Console.WriteLine();
+								Console.WriteLine("<type number then tap Enter>");
+								string weapon = Console.ReadLine();
+								Console.Clear();
+								if (weapon == "1")
+								{
+									Console.WriteLine("Iron Oak Staff");
+									Console.WriteLine();
+									Console.WriteLine("Physical Damage: " + 5);
+									Console.WriteLine("Magic Damage: " + 12);
+									Console.WriteLine("Defense: " + 4);
+									Console.WriteLine("Resistence: " + 8);
+									Console.WriteLine("Corruption: " + 0);
+									Console.WriteLine();
+									Console.WriteLine("A basic staff made from strong oak with an iron core. Its primarialy used for new mages and magic users.");
+									Console.WriteLine("Although it is simple in terms of magic it can also smack someone upside the head with relativly moderate force.");
+
+								} //staff
+								else if (weapon == "2")
+								{
+									Console.WriteLine("Black Steel Dagger");
+									Console.WriteLine();
+									Console.WriteLine("Physical Damage: " + 15);
+									Console.WriteLine("Magic Damage: " + 3);
+									Console.WriteLine("Defense: " + 2);
+									Console.WriteLine("Resistence: " + 3);
+									Console.WriteLine("Corruption: " + 1);
+									Console.WriteLine();
+									Console.WriteLine("Forged from a reinforced steel that turns black when heated this dagger can pierce simple armour like butter");
+									Console.WriteLine("When heated in battle the dagger will release a simple toxin that will posion an enemy when it next connects");
+								} //dagger
+								else if (weapon == "3")
+								{
+									Console.WriteLine("Old Rusted Sword");
+									Console.WriteLine();
+									Console.WriteLine("Physical Damage: " + 13);
+									Console.WriteLine("Magic Damage: " + 0);
+									Console.WriteLine("Defense: " + 9);
+									Console.WriteLine("Resistence: " + 2);
+									Console.WriteLine("Corruption: " + 0);
+									Console.WriteLine();
+									Console.WriteLine("An old sword that was not well kept. It has a slightly dulled edge but, is still sturdy enough to hold up against a few attacks.");
+									Console.WriteLine("Perhaps with the right care this blade will the restored to its former glory.");
+								} //sword
+								else if (weapon == "4")
+								{
+									Console.WriteLine("Dulled Mace");
+									Console.WriteLine();
+									Console.WriteLine("Physical Damage: " + 10);
+									Console.WriteLine("Magic Damage: " + 2);
+									Console.WriteLine("Defense: " + 7);
+									Console.WriteLine("Resistence: " + 3);
+									Console.WriteLine("Corruption: " + 0);
+									Console.WriteLine();
+									Console.WriteLine("Normally a cleric's weapon (for some reason) it is imbued with some holy magic giving its user a slight magic resistence.");
+									Console.WriteLine("This holy magic also deals a slight amount of purifying damage");
+								} //mace
+								else if (weapon == "5")
+								{
+									Console.WriteLine("Thief's Shortblade");
+									Console.WriteLine();
+									Console.WriteLine("Physical Damage: " + 14);
+									Console.WriteLine("Magic Damage: " + 1);
+									Console.WriteLine("Defense: " + 6);
+									Console.WriteLine("Resistence: " + 3);
+									Console.WriteLine("Corruption: " + 0);
+									Console.WriteLine();
+									Console.WriteLine("This blade is longer than a dagger but not as long as a sword. It has a sharp curved blade able to cut through flesh with relative ease.");
+									Console.WriteLine("Though not very useful as a weapon against enemies with stronger armour it can still be useful early on.");
+								} //Shortblade
+								else if (weapon == "6")
+								{
+									Console.WriteLine("Unarmed");
+									Console.WriteLine();
+									Console.WriteLine("Physical Damage: " + 3);
+									Console.WriteLine("Magic Damage: " + 0);
+									Console.WriteLine("Defense: " + 1);
+									Console.WriteLine("Resistence: " + 1);
+									Console.WriteLine("Corruption: " + 0);
+									Console.WriteLine();
+									Console.WriteLine("Good Luck. As a bit of help you will get a few potions.");
+									Console.WriteLine();
+								}
+								else
+								{
+									Console.WriteLine("Please enter a valid number");
+								}
+							}
 						}
 					}
 					#endregion
