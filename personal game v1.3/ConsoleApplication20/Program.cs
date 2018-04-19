@@ -37,8 +37,14 @@ namespace Shadow_Warriors
 			while (true)
 			{
 				string Class_Name = "blank";
-					#region New Game Loop
+				#region New Game Loop
 				#region Start Up
+				string EquipedArmour;
+				int EquipedArmourStatsPhyDef;
+				int EquipedArmourStatsMagDef;
+				string EquipedArmourStatsEffectName;
+				int EquipedArmourStatsEffectNum;
+				string EquipedArmourType;
 				string name;
 				int dif = 5;
 				bool skip = false;
@@ -599,6 +605,7 @@ namespace Shadow_Warriors
 					}
 					#endregion
 					#region Class Setting
+					#region Mostly Useless
 					int[] staff = new int[10] { 10, 15, 20, 25, 30, 35, 40, 45, 50, 55 };
 					int[] sword = new int[10] { 10, 15, 20, 25, 30, 35, 40, 45, 50, 55 };
 					int[] mace = new int[10] { 7, 16, 25, 34, 43, 52, 61, 70, 79, 88 };
@@ -610,83 +617,93 @@ namespace Shadow_Warriors
 					int magDef = basemagDef;
 					int phyDef = basephyDef;
 					int coin = cash;
-					if (type == 1.1)
+#endregion
+					#region Mage Start
+					if (type == 1.1) //Time
 					{
 						magAtk = magAtk + 10 + staff[0];
 						magDef = magDef + 10;
 						phyAtk = 5;
 						phyDef = 15;
 					}
-					else if (type == 1.2)
+					else if (type == 1.2) //Fire
 					{
 						magAtk = magAtk + 5 + staff[0];
 						magDef = magDef + 10;
 						phyAtk = 7;
 						phyDef = 15;
 					}
-					else if (type == 1.3)
+					else if (type == 1.3) //Shadows
 					{
 						magAtk = magAtk + 6 + staff[0];
 						magDef = magDef + 15;
 						phyAtk = 5;
 						phyDef = 10;
 					}
-					else if (type == 1.4)
+					else if (type == 1.4) //Storm
 					{
 						magAtk = magAtk + 3 + staff[0];
 						magDef = magDef + 10;
 						phyAtk = 5;
 						phyDef = 15;
 					}
-					else if (type == 1.5)
+					else if (type == 1.5) //Necromancy
 					{
 						magAtk = magAtk + 8 + staff[0];
 						magDef = magDef + 10;
 						phyAtk = 5;
 						phyDef = 15;
 					}
-					else if (type == 1.6)
+					else if (type == 1.6) //Transformation (Locked)
 					{
 						magAtk = magAtk + 2 + staff[0];
 						magDef = magDef + 10;
 						phyAtk = 15;
 						phyDef = 20;
 					}
-					else if (type == 2)
+#endregion
+					else if (type == 2) //Knight
 					{
-						magAtk = 0;
-						magDef = 5;
-						phyAtk = sword[0];
-						phyDef = 35;
+						EquipedArmour = "Steel Plate";
+						EquipedArmourType = "Heavy: Steel";
+						EquipedArmourStatsPhyDef = 16;
+						EquipedArmourStatsMagDef = 2;
+						EquipedArmourStatsEffectName = "Second Hit";
+						EquipedArmourStatsEffectNum = 0;
 					}
-					else if (type == 3)
+					else if (type == 3) //Cleric
 					{
-						magAtk = staff[1];
-						magDef = 10;
-						phyAtk = mace[0];
-						phyDef = 10;
+						EquipedArmour = "Worshipper's Garments";
+						EquipedArmourType = "Light: Cloth";
+						EquipedArmourStatsPhyDef = 1;
+						EquipedArmourStatsMagDef = 5;
+						EquipedArmourStatsEffectName = "Holy Guardian";
+						EquipedArmourStatsEffectNum = 0;
 					}
-					else if (type == 4)
+					else if (type == 4) //Bandit
 					{
-						magAtk = 0;
-						magDef = 3;
-						phyAtk = mace[0];
-						phyDef = 30;
+						EquipedArmour = "Thief's Set";
+						EquipedArmourType = "Medium: Leather";
+						EquipedArmourStatsPhyDef = 7;
+						EquipedArmourStatsMagDef = 3;
+						EquipedArmourStatsEffectName = "Lucky Find";
+						EquipedArmourStatsEffectNum = 0;
 					}
-					else if (type == 5)
+					else if (type == 5) //Assassin
 					{
 						magAtk = 5;
 						magDef = 15;
 						phyAtk = dagger[0];
 						phyDef = 5;
 					}
-					else if (type == 6)
+					else if (type == 6) //Swordsman
 					{
 						magAtk = 10;
 						magDef = 20;
 						phyAtk = sword[1];
 						phyDef = 20;
 					}
+					#region Work On Later
 					else if (type == 7)
 					{
 						magAtk = 5;
@@ -750,6 +767,7 @@ namespace Shadow_Warriors
 						phyAtk = 10;
 						phyDef = 10;
 					}
+#endregion
 					#endregion
 					#region Creature making
 					string[] FlameCreature_names = new string[20] { "fire imp", "ash wolf", "Black Flame Shade", "Molten Golem", "Magma Serpent", "Scorched Knight", "Obsidian Scorpion", "Rage Demon", "Enraged Shaman", "Banshee of The Dark Flame", "Corrupted Fire Spirit", "Hunter of the Burnt Ruin", "Prince of the Burning Kingdom", "Blazing Goblin", "Terrifying Bunny of The Pit", "Tormented Soul", "Ash Storm Dragon", "Flames of Chaos", "Cinder Winged Horror", "Flame Clawed Drake" };
@@ -824,6 +842,85 @@ namespace Shadow_Warriors
 					{
 						while (Hp > 0)
 						{
+							#region all stats
+							#region Temp
+							int levelPerks = 0;
+							int zentos = 1;
+							bool left_enabled = false;
+							string remove;
+							bool unarmed = false;
+							int cheats_used = 0;
+							double level = 1;
+							int maxHp = Hp;
+							int maxMg = magic_Energy;
+							int maxSt = stamina;
+							int[] buyingSwordDamage = new int[] { 20, 35, 48, 64, 82 };  //iron, steel, shadow's bane, Beast King, Demon iron
+							int[] buyingStaffDamage = new int[] { 30, 42, 50, 62, 78 };
+							#endregion
+							List<int> inventoryNums = new List<int>();
+							List<string> Items = new List<string>();
+							List<string> Potions = new List<string>();
+							List<string> Armour = new List<string>();
+							List<int> ArmourDefence = new List<int>();
+							List<string> ArmourType = new List<string>();
+							List<string> ArmourEnchantment = new List<string>();
+							List<string> Weapons = new List<string>();
+							List<int> WeaponDamagePhy = new List<int>();
+							List<string> WeaponDamageMag = new List<string>();
+							List<string> WeaponType = new List<string>();
+							List<string> WeaponEnchantment = new List<string>();
+							List<string> WeaponDefencePhy = new List<string>();
+							List<string> WeaponDefMag = new List<string>();
+							List<int> Items_Price = new List<int>();
+							List<bool> Bought_Item = new List<bool>();
+							List<string> Magic = new List<string>();
+							List<int> MagicDamage = new List<int>();
+							List<string> MagicType = new List<string>();
+							List<int> MagicCost = new List<int>();
+							List<string> remnantMagic = new List<string>();
+							string current_enemy;
+							int current_attack = 0;
+							double current_defence = 0;
+							bool Home = false;
+							bool item = false;
+							string rightHandWeaponEquiped = "";
+							int rightHandWeaponStats;
+							string rightHandWeaponStatsExtraEffect;
+							int rightHandWeaponStatsExtraNum;
+							int rightHandWeaponStatsDefPhy;
+							int rightHandWeaponStatsDefMag;
+							int rightHandWeaponStatsAtkPhy;
+							int rightHandWeaponStatsAtkMag;
+							string leftHandWeaponEquiped = "";
+							int leftHandWeaponStats;
+							int leftHandWeaponStatsDefPhy;
+							int leftHandWeaponStatsDefMag;
+							int lefttHandWeaponStatsAtkPhy;
+							int leftHandWeaponStatsAtkMag;
+							string leftHandWeaponStatsExtraEffect;
+							int leftHandWeaponStatsExtraNum;
+							#region temp
+							int Dungeon_clear = 0;
+							int staff_level = 1;
+							int gold = 0;
+							int macez = 10;
+							int swordz = 20;
+							int staffz = 10;
+							int daggerz = 10;
+							Hp = 70;
+							int t = 0;
+							int r = 0;
+							int z;
+							int por;
+							bool left = false;
+							bool buy1 = false;
+							bool buy2 = false;
+							bool buy3 = false;
+							bool buy4 = false;
+							string shop_stat = "open";
+							string shop_option = "three";
+#endregion
+							#endregion
 							Console.WriteLine("Welcome to the partial demo of Project-Fenrir");
 							Console.WriteLine();
 							Console.WriteLine("Due to this game currently being in text form only this demo will only be to show off the combat and inventory system.");
@@ -859,7 +956,7 @@ namespace Shadow_Warriors
 									Console.WriteLine();
 									Console.WriteLine("A basic staff made from strong oak with an iron core. Its primarialy used for new mages and magic users.");
 									Console.WriteLine("Although it is simple in terms of magic it can also smack someone upside the head with relativly moderate force.");
-
+									Console.WriteLine();
 								} //staff
 								else if (weapon == "2")
 								{
@@ -873,6 +970,7 @@ namespace Shadow_Warriors
 									Console.WriteLine();
 									Console.WriteLine("Forged from a reinforced steel that turns black when heated this dagger can pierce simple armour like butter");
 									Console.WriteLine("When heated in battle the dagger will release a simple toxin that will posion an enemy when it next connects");
+									Console.WriteLine();
 								} //dagger
 								else if (weapon == "3")
 								{
@@ -886,6 +984,7 @@ namespace Shadow_Warriors
 									Console.WriteLine();
 									Console.WriteLine("An old sword that was not well kept. It has a slightly dulled edge but, is still sturdy enough to hold up against a few attacks.");
 									Console.WriteLine("Perhaps with the right care this blade will the restored to its former glory.");
+									Console.WriteLine();
 								} //sword
 								else if (weapon == "4")
 								{
@@ -894,11 +993,12 @@ namespace Shadow_Warriors
 									Console.WriteLine("Physical Damage: " + 10);
 									Console.WriteLine("Magic Damage: " + 2);
 									Console.WriteLine("Defense: " + 7);
-									Console.WriteLine("Resistence: " + 3);
+									Console.WriteLine("Resistence: " + 4);
 									Console.WriteLine("Corruption: " + 0);
 									Console.WriteLine();
 									Console.WriteLine("Normally a cleric's weapon (for some reason) it is imbued with some holy magic giving its user a slight magic resistence.");
 									Console.WriteLine("This holy magic also deals a slight amount of purifying damage");
+									Console.WriteLine();
 								} //mace
 								else if (weapon == "5")
 								{
@@ -912,6 +1012,7 @@ namespace Shadow_Warriors
 									Console.WriteLine();
 									Console.WriteLine("This blade is longer than a dagger but not as long as a sword. It has a sharp curved blade able to cut through flesh with relative ease.");
 									Console.WriteLine("Though not very useful as a weapon against enemies with stronger armour it can still be useful early on.");
+									Console.WriteLine();
 								} //Shortblade
 								else if (weapon == "6")
 								{
@@ -925,10 +1026,84 @@ namespace Shadow_Warriors
 									Console.WriteLine();
 									Console.WriteLine("Good Luck. As a bit of help you will get a few potions.");
 									Console.WriteLine();
-								}
+								} //unarmed
 								else
 								{
 									Console.WriteLine("Please enter a valid number");
+								}
+								if (weapon == "6" || weapon == "5" || weapon == "4" || weapon == "3" || weapon == "2" || weapon == "1")
+								{
+									Console.WriteLine("Is this the weapon you want?");
+									Console.WriteLine();
+									Console.WriteLine("<enter yes or no then tap Enter>");
+									choice = Console.ReadLine();
+									if (choice == "yes" || choice == "y" || choice == "Yes" || choice == "Y" || choice == "YES")
+									{
+										if (weapon == "1")
+										{
+											rightHandWeaponEquiped = "Iron Oak Staff";
+											rightHandWeaponStatsAtkPhy = 5;
+											rightHandWeaponStatsAtkMag = 12;
+											rightHandWeaponStatsDefPhy = 4;
+											rightHandWeaponStatsDefMag = 8;
+											rightHandWeaponStatsExtraEffect = "Strengthen Magic: All";
+											rightHandWeaponStatsExtraNum = 2;
+										}
+										else if (weapon == "2")
+										{
+											rightHandWeaponEquiped = "Black Steel Dagger";
+											rightHandWeaponStatsAtkPhy = 15;
+											rightHandWeaponStatsAtkMag = 3;
+											rightHandWeaponStatsDefPhy = 2;
+											rightHandWeaponStatsDefMag = 3;
+											rightHandWeaponStatsExtraEffect = "Poison: Weak";
+											rightHandWeaponStatsExtraNum = 6;
+										}
+										else if (weapon == "3")
+										{
+											rightHandWeaponEquiped = "Old Rusted Sword";
+											rightHandWeaponStatsAtkPhy = 13;
+											rightHandWeaponStatsAtkMag = 0;
+											rightHandWeaponStatsDefPhy = 9;
+											rightHandWeaponStatsDefMag = 2;
+											rightHandWeaponStatsExtraEffect = "Blade: Sharpen";
+											rightHandWeaponStatsExtraNum = 3;
+										}
+										else if (weapon == "4")
+										{
+											rightHandWeaponEquiped = "Dulled Mace";
+											rightHandWeaponStatsAtkPhy = 10;
+											rightHandWeaponStatsAtkMag = 2;
+											rightHandWeaponStatsDefPhy = 7;
+											rightHandWeaponStatsDefMag = 4;
+											rightHandWeaponStatsExtraEffect = "Add Damage: Pure";
+											rightHandWeaponStatsExtraNum = 4;
+										}
+										else if (weapon == "5")
+										{
+											rightHandWeaponEquiped = "Thief's Shortblade";
+											rightHandWeaponStatsAtkPhy = 14;
+											rightHandWeaponStatsAtkMag = 1;
+											rightHandWeaponStatsDefPhy = 6;
+											rightHandWeaponStatsDefMag = 3;
+											rightHandWeaponStatsExtraEffect = "Effect: Weak Armour Pierce";
+											rightHandWeaponStatsExtraNum = 2;
+										}
+										else if (weapon == "6")
+										{
+											rightHandWeaponEquiped = "Unarmed";
+											rightHandWeaponStatsAtkPhy = 3;
+											rightHandWeaponStatsAtkMag = 0;
+											rightHandWeaponStatsDefPhy = 1;
+											rightHandWeaponStatsDefMag = 1;
+											rightHandWeaponStatsExtraEffect = "Increase Defence: Tier 1";
+											rightHandWeaponStatsExtraNum = 1;
+											Potions.Add("Beserker's Rage");
+											Potions.Add("Mage's Cloak");
+											Potions.Add("Godly Blessing");
+											Potions.Add("Thief's Smoke Screen");
+										}
+									}
 								}
 							}
 						}
@@ -1001,9 +1176,6 @@ namespace Shadow_Warriors
 						string leftHandWeaponEquiped = "";
 						int rightHandWeaponStats;
 						int leftHandWeaponStats;
-						string EquipedArmour;
-						int EquipedArmourStats;
-						string EquipedArmourType;
 						int Dungeon_clear = 0;
 						int staff_level = 1;
 						int gold = 0;
@@ -2885,7 +3057,7 @@ namespace Shadow_Warriors
 							else if (choice == "system: time split" && cheats_used < 6)
 							{
 								EquipedArmour = "Dragon Shade Armour";
-								EquipedArmourStats = 50000;
+								EquipedArmourStatsPhyDef = 50000;
 								if (adminAccess == false)
 								{
 									cheats_used++;
