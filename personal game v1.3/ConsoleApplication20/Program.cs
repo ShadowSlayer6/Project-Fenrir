@@ -619,50 +619,60 @@ namespace Shadow_Warriors
 					int coin = cash;
 #endregion
 					#region Mage Start
-					if (type == 1.1) //Time
+					if (type == 1.1) 
 					{
-						magAtk = magAtk + 10 + staff[0];
-						magDef = magDef + 10;
-						phyAtk = 5;
-						phyDef = 15;
-					}
-					else if (type == 1.2) //Fire
+						EquipedArmour = "Novice Chronomantic Robe";
+						EquipedArmourType = "Light: Clockwork Fragment";
+						EquipedArmourStatsPhyDef = 7;
+						EquipedArmourStatsMagDef = 12;
+						EquipedArmourStatsEffectName = "Crack Time";
+						EquipedArmourStatsEffectNum = 0;
+					}//Time
+					else if (type == 1.2) 
 					{
-						magAtk = magAtk + 5 + staff[0];
-						magDef = magDef + 10;
-						phyAtk = 7;
-						phyDef = 15;
-					}
-					else if (type == 1.3) //Shadows
+						EquipedArmour = "Novice Pyromancer's Robe";
+						EquipedArmourType = "Light: Ashen Cloth";
+						EquipedArmourStatsPhyDef = 4;
+						EquipedArmourStatsMagDef = 12;
+						EquipedArmourStatsEffectName = "Blazen Ash";
+						EquipedArmourStatsEffectNum = 0;
+					}//Fire
+					else if (type == 1.3) 
 					{
-						magAtk = magAtk + 6 + staff[0];
-						magDef = magDef + 15;
-						phyAtk = 5;
-						phyDef = 10;
-					}
-					else if (type == 1.4) //Storm
+						EquipedArmour = "Novice Shadowmancer's Robe";
+						EquipedArmourType = "Light: Shadow Weaved Cloth";
+						EquipedArmourStatsPhyDef = 6;
+						EquipedArmourStatsMagDef = 10;
+						EquipedArmourStatsEffectName = "Incompassing Shadows";
+						EquipedArmourStatsEffectNum = 0;
+					}//Shadows
+					else if (type == 1.4) 
 					{
-						magAtk = magAtk + 3 + staff[0];
-						magDef = magDef + 10;
-						phyAtk = 5;
-						phyDef = 15;
-					}
-					else if (type == 1.5) //Necromancy
+						EquipedArmour = "Novice Electromantic Robe";
+						EquipedArmourType = "Light: Electrified Cloth";
+						EquipedArmourStatsPhyDef = 5;
+						EquipedArmourStatsMagDef = 11;
+						EquipedArmourStatsEffectName = "Electric Release";
+						EquipedArmourStatsEffectNum = 0;
+					}//Storm
+					else if (type == 1.5) 
 					{
-						magAtk = magAtk + 8 + staff[0];
-						magDef = magDef + 10;
-						phyAtk = 5;
-						phyDef = 15;
-					}
+						EquipedArmour = "Novice Necromancer's Robe";
+						EquipedArmourType = "Light: Soul Infused Cloth";
+						EquipedArmourStatsPhyDef = 4;
+						EquipedArmourStatsMagDef = 13;
+						EquipedArmourStatsEffectName = "Reinforcing Soul";
+						EquipedArmourStatsEffectNum = 0;
+					}//Necromancy
 					else if (type == 1.6) //Transformation (Locked)
 					{
 						magAtk = magAtk + 2 + staff[0];
 						magDef = magDef + 10;
 						phyAtk = 15;
 						phyDef = 20;
-					}
+					} //Locked
 #endregion
-					else if (type == 2) //Knight
+					else if (type == 2) 
 					{
 						EquipedArmour = "Steel Plate";
 						EquipedArmourType = "Heavy: Steel";
@@ -670,8 +680,8 @@ namespace Shadow_Warriors
 						EquipedArmourStatsMagDef = 2;
 						EquipedArmourStatsEffectName = "Second Hit";
 						EquipedArmourStatsEffectNum = 0;
-					}
-					else if (type == 3) //Cleric
+					}//Knight
+					else if (type == 3) 
 					{
 						EquipedArmour = "Worshipper's Garments";
 						EquipedArmourType = "Light: Cloth";
@@ -679,8 +689,8 @@ namespace Shadow_Warriors
 						EquipedArmourStatsMagDef = 5;
 						EquipedArmourStatsEffectName = "Holy Guardian";
 						EquipedArmourStatsEffectNum = 0;
-					}
-					else if (type == 4) //Bandit
+					}//Cleric
+					else if (type == 4) 
 					{
 						EquipedArmour = "Thief's Set";
 						EquipedArmourType = "Medium: Leather";
@@ -688,21 +698,25 @@ namespace Shadow_Warriors
 						EquipedArmourStatsMagDef = 3;
 						EquipedArmourStatsEffectName = "Lucky Find";
 						EquipedArmourStatsEffectNum = 0;
-					}
-					else if (type == 5) //Assassin
+					}//Bandit
+					else if (type == 5) 
 					{
-						magAtk = 5;
-						magDef = 15;
-						phyAtk = dagger[0];
-						phyDef = 5;
-					}
-					else if (type == 6) //Swordsman
+						EquipedArmour = "Tattered Assassins Gear";
+						EquipedArmourType = "Medium: Shadowed Leather";
+						EquipedArmourStatsPhyDef = 5;
+						EquipedArmourStatsMagDef = 8;
+						EquipedArmourStatsEffectName = "Strike First";
+						EquipedArmourStatsEffectNum = 0;
+					}//Assassin
+					else if (type == 6) 
 					{
-						magAtk = 10;
-						magDef = 20;
-						phyAtk = sword[1];
-						phyDef = 20;
-					}
+						EquipedArmour = "Mercinaries Armour";
+						EquipedArmourType = "Heavy: Lightened Steel";
+						EquipedArmourStatsPhyDef = 13;
+						EquipedArmourStatsMagDef = 4;
+						EquipedArmourStatsEffectName = "Altered Armour";
+						EquipedArmourStatsEffectNum = 0;
+					}//Swordsman
 					#region Work On Later
 					else if (type == 7)
 					{
