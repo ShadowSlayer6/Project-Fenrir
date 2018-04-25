@@ -604,7 +604,7 @@ namespace Shadow_Warriors
 						Console.ReadLine();
 					}
 					#endregion
-					#region Class Setting
+				#region Class Setting
 					#region Mostly Useless
 					int[] staff = new int[10] { 10, 15, 20, 25, 30, 35, 40, 45, 50, 55 };
 					int[] sword = new int[10] { 10, 15, 20, 25, 30, 35, 40, 45, 50, 55 };
@@ -783,7 +783,7 @@ namespace Shadow_Warriors
 					}
 #endregion
 					#endregion
-					#region Creature making
+				#region Creature making
 					string[] FlameCreature_names = new string[20] { "fire imp", "ash wolf", "Black Flame Shade", "Molten Golem", "Magma Serpent", "Scorched Knight", "Obsidian Scorpion", "Rage Demon", "Enraged Shaman", "Banshee of The Dark Flame", "Corrupted Fire Spirit", "Hunter of the Burnt Ruin", "Prince of the Burning Kingdom", "Blazing Goblin", "Terrifying Bunny of The Pit", "Tormented Soul", "Ash Storm Dragon", "Flames of Chaos", "Cinder Winged Horror", "Flame Clawed Drake" };
 					int[] FlameCreature_Health = new int[20] { 125, 150, 240, 315, 384, 500, 300, 632, 260, 547, 482, 290, 349, 520, 800, 394, 930, 656, 845, 937 };
 					string[] FlameCreature_Type = new string[20] { "Demon", "Beast", "Shade", "Construct", "Serpent", "Human", "Beast", "Demon", "Human", "Spirit", "Spirit", "Human", "Human", "Beast", "Demon", "Spirit", "Dragon", "Demon", "Dragon", "Dragon" };
@@ -1062,6 +1062,38 @@ namespace Shadow_Warriors
 											rightHandWeaponStatsDefMag = 8;
 											rightHandWeaponStatsExtraEffect = "Strengthen Magic: All";
 											rightHandWeaponStatsExtraNum = 2;
+											if (type == 1.1) //time
+											{
+												Magic.Add("Fracture Moment");
+												MagicType.Add("Time");
+												Magic.Add("Rewind");
+												MagicType.Add("Time");
+											}
+											else if (type == 1.2) //fire
+											{
+												Magic.Add("Flame Orb");
+												MagicType.Add("Fire");
+												Magic.Add("Fire Stream");
+												MagicType.Add("Fire");
+											}
+											else if (type == 1.3) //shadows
+											{
+												Magic.Add("Consuming Dark");
+												MagicType.Add("Shadow");
+												Magic.Add("Approaching Shadow");
+												MagicType.Add("Shadow");
+											}
+											else if (type == 1.4) //storm
+											{
+												Magic.Add("Electrify");
+												MagicType.Add("Storm");
+												Magic.Add("Gathering Storm");
+												MagicType.Add("Storm");
+											}
+											else if (type == 1.5) //necromancy
+											{
+												Magic.Add("");
+											}
 										}
 										else if (weapon == "2")
 										{
