@@ -890,8 +890,11 @@ namespace Shadow_Warriors
 							List<string> Magic = new List<string>();
 							List<int> MagicDamage = new List<int>();
 							List<string> MagicType = new List<string>();
+							List<int> MagicTier = new List<int>();
 							List<int> MagicCost = new List<int>();
-							List<string> remnantMagic = new List<string>();
+							List<string> MagicElement = new List<string>();
+							List<string> ExtraMagic = new List<string>();
+							List<string> MagicEffect = new List<string>();
 							string current_enemy;
 							int current_attack = 0;
 							double current_defence = 0;
@@ -933,8 +936,89 @@ namespace Shadow_Warriors
 							bool buy4 = false;
 							string shop_stat = "open";
 							string shop_option = "three";
-#endregion
 							#endregion
+							#endregion
+							if (type == 1.1) //time
+							{
+								Magic.Add("Fracture Moment");
+								MagicType.Add("Time");
+								MagicElement.Add("Time");
+								MagicTier.Add(1);
+								MagicEffect.Add("Damage 15");
+								ExtraMagic.Add("None");
+								Magic.Add("Rewind");
+								MagicType.Add("Time");
+								MagicElement.Add("Time");
+								MagicTier.Add(1);
+								MagicEffect.Add("Heal 20");
+								ExtraMagic.Add("None");
+							}
+							else if (type == 1.2) //fire
+							{
+								Magic.Add("Flame Orb");
+								MagicType.Add("Fire");
+								MagicElement.Add("Fire");
+								MagicTier.Add(1);
+								MagicEffect.Add("Damage 13");
+								ExtraMagic.Add("Scorch");
+								Magic.Add("Fire Stream");
+								MagicType.Add("Fire");
+								MagicElement.Add("Fire");
+								MagicTier.Add(1);
+								MagicEffect.Add("Damage 17");
+								ExtraMagic.Add("None");
+							}
+							else if (type == 1.3) //shadows
+							{
+								Magic.Add("Consuming Dark");
+								MagicType.Add("Shadows");
+								MagicElement.Add("Darkness");
+								MagicTier.Add(2);
+								MagicEffect.Add("Damage 14");
+								ExtraMagic.Add("Stolen Life");
+								Magic.Add("Approaching Shadow");
+								MagicType.Add("Shadows");
+								MagicElement.Add("Shadow");
+								MagicTier.Add(1);
+								MagicEffect.Add("Defence 2");
+								ExtraMagic.Add("Shatter");
+							}
+							else if (type == 1.4) //storm
+							{
+								Magic.Add("Electrify");
+								MagicType.Add("Storm");
+								MagicElement.Add("Lightning");
+								MagicTier.Add(1);
+								MagicEffect.Add("Damage 10");
+								ExtraMagic.Add("Energize-Paralysis");
+								Magic.Add("Gathering Storm");
+								MagicType.Add("Storm");
+								MagicElement.Add("Water");
+								MagicTier.Add(1);
+								MagicEffect.Add("Damage 9");
+								ExtraMagic.Add("Magnifies");
+							}
+							else if (type == 1.5) //necromancy
+							{
+								Magic.Add("Collect Soul");
+								MagicType.Add("Necromancy");
+								MagicElement.Add("Darkness");
+								MagicTier.Add(1);
+								MagicEffect.Add("Death 1");
+								ExtraMagic.Add("None");
+								Magic.Add("Raise Undead Skeleton");
+								MagicType.Add("Necromancy");
+								MagicElement.Add("Earth");
+								MagicTier.Add(1);
+								MagicEffect.Add("Consume 1");
+								ExtraMagic.Add("Unstable-6");
+								Magic.Add("Undead Screech");
+								MagicType.Add("Necromancy");
+								MagicElement.Add("Ice");
+								MagicTier.Add(1);
+								MagicEffect.Add("Damage 5");
+								ExtraMagic.Add("Chorus");
+							}
 							Console.WriteLine("Welcome to the partial demo of Project-Fenrir");
 							Console.WriteLine();
 							Console.WriteLine("Due to this game currently being in text form only this demo will only be to show off the combat and inventory system.");
@@ -1062,39 +1146,7 @@ namespace Shadow_Warriors
 											rightHandWeaponStatsDefMag = 8;
 											rightHandWeaponStatsExtraEffect = "Strengthen Magic: All";
 											rightHandWeaponStatsExtraNum = 2;
-											if (type == 1.1) //time
-											{
-												Magic.Add("Fracture Moment");
-												MagicType.Add("Time");
-												Magic.Add("Rewind");
-												MagicType.Add("Time");
-											}
-											else if (type == 1.2) //fire
-											{
-												Magic.Add("Flame Orb");
-												MagicType.Add("Fire");
-												Magic.Add("Fire Stream");
-												MagicType.Add("Fire");
-											}
-											else if (type == 1.3) //shadows
-											{
-												Magic.Add("Consuming Dark");
-												MagicType.Add("Shadow");
-												Magic.Add("Approaching Shadow");
-												MagicType.Add("Shadow");
-											}
-											else if (type == 1.4) //storm
-											{
-												Magic.Add("Electrify");
-												MagicType.Add("Storm");
-												Magic.Add("Gathering Storm");
-												MagicType.Add("Storm");
-											}
-											else if (type == 1.5) //necromancy
-											{
-												Magic.Add("");
-											}
-										}
+										} //Staff
 										else if (weapon == "2")
 										{
 											rightHandWeaponEquiped = "Black Steel Dagger";
@@ -1104,7 +1156,7 @@ namespace Shadow_Warriors
 											rightHandWeaponStatsDefMag = 3;
 											rightHandWeaponStatsExtraEffect = "Poison: Weak";
 											rightHandWeaponStatsExtraNum = 6;
-										}
+										} //Dagger
 										else if (weapon == "3")
 										{
 											rightHandWeaponEquiped = "Old Rusted Sword";
@@ -1114,7 +1166,7 @@ namespace Shadow_Warriors
 											rightHandWeaponStatsDefMag = 2;
 											rightHandWeaponStatsExtraEffect = "Blade: Sharpen";
 											rightHandWeaponStatsExtraNum = 3;
-										}
+										} //Sword
 										else if (weapon == "4")
 										{
 											rightHandWeaponEquiped = "Dulled Mace";
@@ -1124,7 +1176,7 @@ namespace Shadow_Warriors
 											rightHandWeaponStatsDefMag = 4;
 											rightHandWeaponStatsExtraEffect = "Add Damage: Pure";
 											rightHandWeaponStatsExtraNum = 4;
-										}
+										} //Mace
 										else if (weapon == "5")
 										{
 											rightHandWeaponEquiped = "Thief's Shortblade";
@@ -1134,7 +1186,7 @@ namespace Shadow_Warriors
 											rightHandWeaponStatsDefMag = 3;
 											rightHandWeaponStatsExtraEffect = "Effect: Weak Armour Pierce";
 											rightHandWeaponStatsExtraNum = 2;
-										}
+										} //Shortblade
 										else if (weapon == "6")
 										{
 											rightHandWeaponEquiped = "Unarmed";
@@ -1148,10 +1200,13 @@ namespace Shadow_Warriors
 											Potions.Add("Mage's Cloak");
 											Potions.Add("Godly Blessing");
 											Potions.Add("Thief's Smoke Screen");
-										}
+										} //Unarmed
+										break;
 									}
 								}
 							}
+							Console.Clear();
+							Console.WriteLine("Would you like a tutorial?");
 						}
 					}
 					#endregion
@@ -1210,7 +1265,7 @@ namespace Shadow_Warriors
 						List<int> MagicDamage = new List<int>();
 						List<string> MagicType = new List<string>();
 						List<int> MagicCost = new List<int>();
-						List<string> remnantMagic = new List<string>();
+						List<string> ExtraMagic = new List<string>();
 						string current_enemy;
 						int current_attack = 0;
 						double current_defence = 0;
@@ -1287,37 +1342,37 @@ namespace Shadow_Warriors
 						MagicDamage.Add(15);
 						MagicCost.Add(10);
 						MagicType.Add("Pyromancy");
-						remnantMagic.Add("Scorch");
+						ExtraMagic.Add("Scorch");
 						Magic.Add("Return To Order");//order
 						MagicDamage.Add(13);
 						MagicCost.Add(15);
 						MagicType.Add("Order");
-						remnantMagic.Add("none");
+						ExtraMagic.Add("none");
 						Magic.Add("Chaotic Destruction");//chaos
 						MagicDamage.Add(18);
 						MagicCost.Add(17);
 						MagicType.Add("Chaos");
-						remnantMagic.Add("none");
+						ExtraMagic.Add("none");
 						Magic.Add("Risen Army");//dead
 						MagicDamage.Add(13);
 						MagicCost.Add(14);
 						MagicType.Add("Necromancy");
-						remnantMagic.Add("none");
+						ExtraMagic.Add("none");
 						Magic.Add("Flash Freeze");//ice
 						MagicDamage.Add(15);
 						MagicCost.Add(10);
 						MagicType.Add("Cryomancy");
-						remnantMagic.Add("Slowed");
+						ExtraMagic.Add("Slowed");
 						Magic.Add("Burst Flame");//fire
 						MagicDamage.Add(19);
 						MagicCost.Add(4);
 						MagicType.Add("Pyromancy");
-						remnantMagic.Add("Scorch");
+						ExtraMagic.Add("Scorch");
 						Magic.Add("Consuming Void");
 						MagicDamage.Add(17);
 						MagicCost.Add(16);
 						MagicType.Add("Void");
-						remnantMagic.Add("none");
+						ExtraMagic.Add("none");
 						#endregion
 						#endregion
 						while (Hp > 0)
@@ -2965,7 +3020,7 @@ namespace Shadow_Warriors
 												Console.WriteLine(ntes + ". " + Magic[nte]);
 												Console.WriteLine("		" + MagicDamage[nte] + " Damage");
 												Console.WriteLine("		" + MagicCost[nte] + " magic cost");
-												Console.WriteLine("		" + remnantMagic[nte] + " other damage");
+												Console.WriteLine("		" + ExtraMagic[nte] + " other damage");
 											}
 											nte++;
 										}
@@ -2981,7 +3036,7 @@ namespace Shadow_Warriors
 												Console.WriteLine(ntes + ". " + Magic[nte]);
 												Console.WriteLine("		" + MagicDamage[nte] + " Damage");
 												Console.WriteLine("		" + MagicCost[nte] + " magic cost");
-												Console.WriteLine("		" + remnantMagic[nte] + " other damage");
+												Console.WriteLine("		" + ExtraMagic[nte] + " other damage");
 											}
 											nte++;
 
@@ -2998,7 +3053,7 @@ namespace Shadow_Warriors
 												Console.WriteLine(ntes + ". " + Magic[nte]);
 												Console.WriteLine("		" + MagicDamage[nte] + " Damage");
 												Console.WriteLine("		" + MagicCost[nte] + " magic cost");
-												Console.WriteLine("		" + remnantMagic[nte] + " other damage");
+												Console.WriteLine("		" + ExtraMagic[nte] + " other damage");
 											}
 											nte++;
 										}
@@ -3014,7 +3069,7 @@ namespace Shadow_Warriors
 												Console.WriteLine(ntes + ". " + Magic[nte]);
 												Console.WriteLine("		" + MagicDamage[nte] + " Damage");
 												Console.WriteLine("		" + MagicCost[nte] + " magic cost");
-												Console.WriteLine("		" + remnantMagic[nte] + " other damage");
+												Console.WriteLine("		" + ExtraMagic[nte] + " other damage");
 											}
 											nte++;
 										}
@@ -3030,7 +3085,7 @@ namespace Shadow_Warriors
 												Console.WriteLine(ntes + ". " + Magic[nte]);
 												Console.WriteLine("		" + MagicDamage[nte] + " Damage");
 												Console.WriteLine("		" + MagicCost[nte] + " magic cost");
-												Console.WriteLine("		" + remnantMagic[nte] + " other damage");
+												Console.WriteLine("		" + ExtraMagic[nte] + " other damage");
 											}
 											nte++;
 										}
@@ -3046,7 +3101,7 @@ namespace Shadow_Warriors
 												Console.WriteLine(ntes + ". " + Magic[nte]);
 												Console.WriteLine("		" + MagicDamage[nte] + " Damage");
 												Console.WriteLine("		" + MagicCost[nte] + " magic cost");
-												Console.WriteLine("		" + remnantMagic[nte] + " other damage");
+												Console.WriteLine("		" + ExtraMagic[nte] + " other damage");
 											}
 											nte++;
 										}
