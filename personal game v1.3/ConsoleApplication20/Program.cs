@@ -1207,6 +1207,70 @@ namespace Shadow_Warriors
 							}
 							Console.Clear();
 							Console.WriteLine("Would you like a tutorial?");
+							Console.WriteLine("<type yes or no then hit Enter>");
+							choice = Console.ReadLine();
+							Console.Clear();
+							if (choice == "yes" || choice == "Yes" || choice == "Y" || choice == "y")
+							{
+								Console.ForegroundColor = ConsoleColor.Cyan;
+								Console.WriteLine("Welcome to the tutorial:");
+								Console.WriteLine("This will be used to help you learn the basics of how to use the combat system.");
+								Console.WriteLine("Let's start off by getting you an enemy.");
+								Console.WriteLine();
+								Console.ForegroundColor = ConsoleColor.DarkBlue;
+								Console.BackgroundColor = ConsoleColor.White;
+								Console.WriteLine("heran");
+								Thread.Sleep(50);
+								Console.Write(" tersi ");
+								Thread.Sleep(50);
+								Console.Write("casit");
+								Thread.Sleep(50);
+								Console.ResetColor();
+								Console.WriteLine();
+								Console.WriteLine();
+								Console.WriteLine();
+								Console.WriteLine();
+								Console.WriteLine("An animated practice dummy appeared.");
+								Console.WriteLine();
+								Console.ForegroundColor = ConsoleColor.Cyan;
+								Console.WriteLine("This is an enemy. Normally found throughout the world, this one is commonly used for training.");
+								Thread.Sleep(3000);
+								Console.WriteLine("Whenever you encounter an enemy, you will normally engage it in battle instantly");
+								Thread.Sleep(2500);
+								Console.WriteLine("Anyways, let's get this battle started");
+								Console.ForegroundColor = ConsoleColor.Red;
+								Console.WriteLine();
+								Console.WriteLine("Practice Dummy attack " + name + "!");
+								Console.WriteLine();
+								Console.ResetColor();
+								Thread.Sleep(4000);
+								Console.Clear();
+								Console.WriteLine("					Practice Dummy				");
+								Console.BackgroundColor = ConsoleColor.Red;
+								Console.ForegroundColor = ConsoleColor.Red;
+								Console.WriteLine("		______________________________________	");
+								Console.ResetColor();
+								Console.WriteLine();
+								Console.WriteLine();
+								Console.BackgroundColor = ConsoleColor.White;
+								Console.WriteLine("					   .________.				");
+								Console.WriteLine("					   |     	|				");
+								Console.WriteLine("					   | .    . |				");
+								Console.WriteLine("					   |		|  				");
+								Console.WriteLine("					   |________|				");
+								Console.WriteLine("						   | |					");
+								Console.WriteLine("					.______|_|_____.			");
+								Console.WriteLine("				   .|			   |.			");
+								Console.WriteLine("				  . |			   | .  		");
+								Console.WriteLine("				 .  |			   |  . 		");
+								Console.WriteLine("					|			   |   .		");
+								Console.WriteLine("					|______________|  			");
+								Console.WriteLine("						  |   |	      			");
+								Console.WriteLine("						  |   |	      			");
+								Console.WriteLine("						  |   |	      			");
+								Console.WriteLine("						  |   |	      			");
+								Console.WriteLine("						  |   |	      			");
+							}
 						}
 					}
 					#endregion
