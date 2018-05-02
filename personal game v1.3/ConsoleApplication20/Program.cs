@@ -1210,6 +1210,8 @@ namespace Shadow_Warriors
 							Console.WriteLine("<type yes or no then hit Enter>");
 							choice = Console.ReadLine();
 							Console.Clear();
+							int selection1 = 1;
+							int selection2 = 1;
 							if (choice == "yes" || choice == "Yes" || choice == "Y" || choice == "y")
 							{
 								Console.ForegroundColor = ConsoleColor.Cyan;
@@ -1250,9 +1252,11 @@ namespace Shadow_Warriors
 								Console.ForegroundColor = ConsoleColor.Red;
 								Console.WriteLine("		______________________________________	");
 								Console.ResetColor();
-								Console.WriteLine();
+								Console.WriteLine("				This is the health bar			");
+								Console.WriteLine("			Once it is empty the fight is over  ");
 								Console.WriteLine();
 								Console.BackgroundColor = ConsoleColor.White;
+								Console.ForegroundColor = ConsoleColor.White;
 								Console.WriteLine("					   .________.				");
 								Console.WriteLine("					   |     	|				");
 								Console.WriteLine("					   | .    . |				");
@@ -1270,6 +1274,283 @@ namespace Shadow_Warriors
 								Console.WriteLine("						  |   |	      			");
 								Console.WriteLine("						  |   |	      			");
 								Console.WriteLine("						  |   |	      			");
+								Console.WriteLine();
+								Console.WriteLine();
+								Console.WriteLine();
+								Console.ResetColor();
+								Console.WriteLine("  _________    _________     ________    _________");
+								Console.WriteLine("	|		  |	 |		   |   | 	    |  |		 |");
+								Console.WriteLine("	| Attack  |  |	Magic  |   |  Item	|  |   Run	 |");
+								Console.WriteLine("	|	 X	  |	 |		   |   |		|  |		 |");
+								Console.WriteLine(" |_________|  |_________|   |________|  |_________|");
+								Console.WriteLine("													  ");
+								Thread.Sleep(7000);
+								Console.Clear();
+								Console.WriteLine("					Practice Dummy				");
+								Console.BackgroundColor = ConsoleColor.Red;
+								Console.ForegroundColor = ConsoleColor.Red;
+								Console.WriteLine("		______________________________________	");
+								Console.ResetColor();
+								Console.WriteLine();
+								Console.WriteLine();
+								Console.BackgroundColor = ConsoleColor.White;
+								Console.ForegroundColor = ConsoleColor.White;
+								Console.WriteLine("					   .________.				");
+								Console.WriteLine("					   |     	|				");
+								Console.WriteLine("					   | .    . |				");
+								Console.WriteLine("					   |		|  				");
+								Console.WriteLine("					   |________|				");
+								Console.WriteLine("						   | |					");
+								Console.WriteLine("					.______|_|_____.			");
+								Console.WriteLine("				   .|			   |.			");
+								Console.WriteLine("				  . |			   | .  		");
+								Console.WriteLine("				 .  |			   |  . 		");
+								Console.WriteLine("					|			   |   .		");
+								Console.WriteLine("					|______________|  			");
+								Console.WriteLine("						  |   |	      			");
+								Console.WriteLine("						  |   |	      			");
+								Console.WriteLine("						  |   |	      			");
+								Console.WriteLine("						  |   |	      			");
+								Console.WriteLine("						  |   |	      			");
+								Console.WriteLine();
+								Console.WriteLine();
+								Console.WriteLine();
+								Console.ResetColor();
+								Console.WriteLine("  _________    _________     ________    _________");
+								Console.WriteLine("	|		  |	 |		   |   | 	    |  |		 |");
+								Console.WriteLine("	| Attack  |  |	Magic  |   |  Item	|  |   Run	 |");
+								Console.WriteLine("	|	 X	  |	 |		   |   |		|  |		 |");
+								Console.WriteLine(" |_________|  |_________|   |________|  |_________|");
+								Console.WriteLine("		 ^										  ");
+								Console.WriteLine("      |");
+								Console.WriteLine("This is the attack option");
+								Console.WriteLine("Using it will allow for several attacks");
+								Thread.Sleep(7000);
+								Console.Clear();
+								Console.WriteLine("					Practice Dummy				");
+								Console.BackgroundColor = ConsoleColor.Red;
+								Console.ForegroundColor = ConsoleColor.Red;
+								Console.WriteLine("		______________________________________	");
+								Console.ResetColor();
+								Console.WriteLine();
+								Console.WriteLine();
+								Console.BackgroundColor = ConsoleColor.White;
+								Console.ForegroundColor = ConsoleColor.White;
+								Console.WriteLine("					   .________.				");
+								Console.WriteLine("					   |     	|				");
+								Console.WriteLine("					   | .    . |				");
+								Console.WriteLine("					   |		|  				");
+								Console.WriteLine("					   |________|				");
+								Console.WriteLine("						   | |					");
+								Console.WriteLine("					.______|_|_____.			");
+								Console.WriteLine("				   .|			   |.			");
+								Console.WriteLine("				  . |			   | .  		");
+								Console.WriteLine("				 .  |			   |  . 		");
+								Console.WriteLine("					|			   |   .		");
+								Console.WriteLine("					|______________|  			");
+								Console.WriteLine("						  |   |	      			");
+								Console.WriteLine("						  |   |	      			");
+								Console.WriteLine("						  |   |	      			");
+								Console.WriteLine("						  |   |	      			");
+								Console.WriteLine("						  |   |	      			");
+								Console.WriteLine();
+								Console.WriteLine();
+								Console.WriteLine();
+								Console.ResetColor();
+								Console.WriteLine("  _________    _________     ________    _________");
+								Console.WriteLine("	|		  |	 |		   |   | 	    |  |		 |");
+								Console.WriteLine("	| Attack  |  |	Magic  |   |  Item	|  |   Run	 |");
+								Console.WriteLine("	|	 	  |	 |	  X    |   |		|  |		 |");
+								Console.WriteLine(" |_________|  |_________|   |________|  |_________|");
+								Console.WriteLine("					  ^							  ");
+								Console.WriteLine("					  |");
+								Console.WriteLine("This is the magic option");
+								Console.WriteLine("Using it will allow you to choose from several spells");
+								Console.WriteLine("This can vairy from healing to damage to enhancement");
+								Thread.Sleep(8000);
+								Console.Clear();
+								Console.WriteLine("					Practice Dummy				");
+								Console.BackgroundColor = ConsoleColor.Red;
+								Console.ForegroundColor = ConsoleColor.Red;
+								Console.WriteLine("		______________________________________	");
+								Console.ResetColor();
+								Console.WriteLine();
+								Console.WriteLine();
+								Console.BackgroundColor = ConsoleColor.White;
+								Console.ForegroundColor = ConsoleColor.White;
+								Console.WriteLine("					   .________.				");
+								Console.WriteLine("					   |     	|				");
+								Console.WriteLine("					   | .    . |				");
+								Console.WriteLine("					   |		|  				");
+								Console.WriteLine("					   |________|				");
+								Console.WriteLine("						   | |					");
+								Console.WriteLine("					.______|_|_____.			");
+								Console.WriteLine("				   .|			   |.			");
+								Console.WriteLine("				  . |			   | .  		");
+								Console.WriteLine("				 .  |			   |  . 		");
+								Console.WriteLine("					|			   |   .		");
+								Console.WriteLine("					|______________|  			");
+								Console.WriteLine("						  |   |	      			");
+								Console.WriteLine("						  |   |	      			");
+								Console.WriteLine("						  |   |	      			");
+								Console.WriteLine("						  |   |	      			");
+								Console.WriteLine("						  |   |	      			");
+								Console.WriteLine();
+								Console.WriteLine();
+								Console.WriteLine();
+								Console.ResetColor();
+								Console.WriteLine("  _________    _________     ________    _________");
+								Console.WriteLine("	|		  |	 |		   |   | 	    |  |		 |");
+								Console.WriteLine("	| Attack  |  |	Magic  |   |  Item	|  |   Run	 |");
+								Console.WriteLine("	|	 	  |	 |		   |   |	X	|  |		 |");
+								Console.WriteLine(" |_________|  |_________|   |________|  |_________|");
+								Console.WriteLine("									^ ");
+								Console.WriteLine("									|");
+								Console.WriteLine("					This is the items selection");
+								Console.WriteLine("Using it will allow you to use items for your inventory");
+								Thread.Sleep(7000);
+								Console.Clear();
+								Console.WriteLine("					Practice Dummy				");
+								Console.BackgroundColor = ConsoleColor.Red;
+								Console.ForegroundColor = ConsoleColor.Red;
+								Console.WriteLine("		______________________________________	");
+								Console.ResetColor();
+								Console.WriteLine();
+								Console.WriteLine();
+								Console.BackgroundColor = ConsoleColor.White;
+								Console.ForegroundColor = ConsoleColor.White;
+								Console.WriteLine("					   .________.				");
+								Console.WriteLine("					   |     	|				");
+								Console.WriteLine("					   | .    . |				");
+								Console.WriteLine("					   |		|  				");
+								Console.WriteLine("					   |________|				");
+								Console.WriteLine("						   | |					");
+								Console.WriteLine("					.______|_|_____.			");
+								Console.WriteLine("				   .|			   |.			");
+								Console.WriteLine("				  . |			   | .  		");
+								Console.WriteLine("				 .  |			   |  . 		");
+								Console.WriteLine("					|			   |   .		");
+								Console.WriteLine("					|______________|  			");
+								Console.WriteLine("						  |   |	      			");
+								Console.WriteLine("						  |   |	      			");
+								Console.WriteLine("						  |   |	      			");
+								Console.WriteLine("						  |   |	      			");
+								Console.WriteLine("						  |   |	      			");
+								Console.WriteLine();
+								Console.WriteLine();
+								Console.WriteLine();
+								Console.ResetColor();
+								Console.WriteLine("  _________    _________     ________    _________");
+								Console.WriteLine("	|		  |	 |		   |   | 	    |  |		 |");
+								Console.WriteLine("	| Attack  |  |	Magic  |   |  Item	|  |   Run	 |");
+								Console.WriteLine("	|	 	  |	 |		   |   |		|  |	X	 |");
+								Console.WriteLine(" |_________|  |_________|   |________|  |_________|");
+								Console.WriteLine("												^");
+								Console.WriteLine("												|");
+								Console.WriteLine("	This option will allow you to run from a battle");
+								Console.WriteLine("	  For the tutorial we'll keep it disabled");
+								Thread.Sleep(7000);
+								Console.Clear();
+								Console.WriteLine("To change your selection use the arrow keys then tap enter");
+								Console.WriteLine("Good luck and have fun");
+								Thread.Sleep(8000);
+								Console.Clear();
+								int DummyHp = 250;
+								while (DummyHp > 0 && Hp > 0)
+								{
+									Console.WriteLine("					Practice Dummy				");
+									Console.BackgroundColor = ConsoleColor.Red;
+									Console.ForegroundColor = ConsoleColor.Red;
+									Console.WriteLine("		______________________________________	");
+									Console.ResetColor();
+									Console.WriteLine();
+									Console.WriteLine();
+									Console.BackgroundColor = ConsoleColor.White;
+									Console.ForegroundColor = ConsoleColor.White;
+									Console.WriteLine("					   .________.				");
+									Console.WriteLine("					   |     	|				");
+									Console.WriteLine("					   | .    . |				");
+									Console.WriteLine("					   |		|  				");
+									Console.WriteLine("					   |________|				");
+									Console.WriteLine("						   | |					");
+									Console.WriteLine("					.______|_|_____.			");
+									Console.WriteLine("				   .|			   |.			");
+									Console.WriteLine("				  . |			   | .  		");
+									Console.WriteLine("				 .  |			   |  . 		");
+									Console.WriteLine("					|			   |   .		");
+									Console.WriteLine("					|______________|  			");
+									Console.WriteLine("						  |   |	      			");
+									Console.WriteLine("						  |   |	      			");
+									Console.WriteLine("						  |   |	      			");
+									Console.WriteLine("						  |   |	      			");
+									Console.WriteLine("						  |   |	      			");
+									Console.WriteLine();
+									Console.WriteLine();
+									Console.WriteLine();
+									Console.ResetColor();
+									if (selection1 <= 1)
+									{
+										selection1 = 1;
+										Console.WriteLine("  _________    _________     ________    _________");
+										Console.WriteLine("	|		  |	 |		   |   | 	    |  |		 |");
+										Console.WriteLine("	| Attack  |  |	Magic  |   |  Item	|  |   Run	 |");
+										Console.WriteLine("	|	 X	  |	 |		   |   |		|  |		 |");
+										Console.WriteLine(" |_________|  |_________|   |________|  |_________|");
+									}
+									else if (selection1 == 2)
+									{
+										Console.WriteLine("  _________    _________     ________    _________");
+										Console.WriteLine("	|		  |	 |		   |   | 	    |  |		 |");
+										Console.WriteLine("	| Attack  |  |	Magic  |   |  Item	|  |   Run	 |");
+										Console.WriteLine("	|	 	  |	 |	  X    |   |		|  |		 |");
+										Console.WriteLine(" |_________|  |_________|   |________|  |_________|");
+									}
+									else if (selection1 == 3)
+									{
+										Console.WriteLine("  _________    _________     ________    _________");
+										Console.WriteLine("	|		  |	 |		   |   | 	    |  |		 |");
+										Console.WriteLine("	| Attack  |  |	Magic  |   |  Item	|  |   Run	 |");
+										Console.WriteLine("	|	 	  |	 |		   |   |	X	|  |		 |");
+										Console.WriteLine(" |_________|  |_________|   |________|  |_________|");
+									}
+									else if (selection1 >= 4)
+									{
+										selection1 = 4;
+										Console.WriteLine("  _________    _________     ________    _________");
+										Console.WriteLine("	|		  |	 |		   |   | 	    |  |		 |");
+										Console.WriteLine("	| Attack  |  |	Magic  |   |  Item	|  |   Run	 |");
+										Console.WriteLine("	|	 	  |	 |		   |   |		|  |	X	 |");
+										Console.WriteLine(" |_________|  |_________|   |________|  |_________|");
+									}
+									ConsoleKeyInfo info = Console.ReadKey();
+									if (info.Key == ConsoleKey.RightArrow)
+									{
+										selection1++;
+									}
+									else if (info.Key == ConsoleKey.LeftArrow)
+									{
+										selection1--;
+									}
+									else if (info.Key == ConsoleKey.Enter)
+									{
+										if (selection1 == 1)
+										{
+
+										}
+										else if (selection1 == 2)
+										{
+
+										}
+										else if (selection1 == 3)
+										{
+
+										}
+										else if (selection1 == 4)
+										{
+
+										}
+									}
+								}
 							}
 						}
 					}
