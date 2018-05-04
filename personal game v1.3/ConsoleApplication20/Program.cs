@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 
 namespace Shadow_Warriors
@@ -901,13 +902,14 @@ namespace Shadow_Warriors
 							bool Home = false;
 							bool item = false;
 							string rightHandWeaponEquiped = "";
-							int rightHandWeaponStats;
-							string rightHandWeaponStatsExtraEffect;
-							int rightHandWeaponStatsExtraNum;
-							int rightHandWeaponStatsDefPhy;
-							int rightHandWeaponStatsDefMag;
-							int rightHandWeaponStatsAtkPhy;
-							int rightHandWeaponStatsAtkMag;
+							string rightHandWeaponType = "";
+							int rightHandWeaponStats= 0;
+							string rightHandWeaponStatsExtraEffect= "";
+							int rightHandWeaponStatsExtraNum= 0;
+							int rightHandWeaponStatsDefPhy= 0;
+							int rightHandWeaponStatsDefMag= 0;
+							int rightHandWeaponStatsAtkPhy = 0;
+							int rightHandWeaponStatsAtkMag = 0;
 							string leftHandWeaponEquiped = "";
 							int leftHandWeaponStats;
 							int leftHandWeaponStatsDefPhy;
@@ -1140,6 +1142,7 @@ namespace Shadow_Warriors
 										if (weapon == "1")
 										{
 											rightHandWeaponEquiped = "Iron Oak Staff";
+											rightHandWeaponType = "Staff";
 											rightHandWeaponStatsAtkPhy = 5;
 											rightHandWeaponStatsAtkMag = 12;
 											rightHandWeaponStatsDefPhy = 4;
@@ -1150,6 +1153,7 @@ namespace Shadow_Warriors
 										else if (weapon == "2")
 										{
 											rightHandWeaponEquiped = "Black Steel Dagger";
+											rightHandWeaponType = "Dagger";
 											rightHandWeaponStatsAtkPhy = 15;
 											rightHandWeaponStatsAtkMag = 3;
 											rightHandWeaponStatsDefPhy = 2;
@@ -1160,6 +1164,7 @@ namespace Shadow_Warriors
 										else if (weapon == "3")
 										{
 											rightHandWeaponEquiped = "Old Rusted Sword";
+											rightHandWeaponType = "Sword";
 											rightHandWeaponStatsAtkPhy = 13;
 											rightHandWeaponStatsAtkMag = 0;
 											rightHandWeaponStatsDefPhy = 9;
@@ -1170,6 +1175,7 @@ namespace Shadow_Warriors
 										else if (weapon == "4")
 										{
 											rightHandWeaponEquiped = "Dulled Mace";
+											rightHandWeaponType = "Mace";
 											rightHandWeaponStatsAtkPhy = 10;
 											rightHandWeaponStatsAtkMag = 2;
 											rightHandWeaponStatsDefPhy = 7;
@@ -1180,6 +1186,7 @@ namespace Shadow_Warriors
 										else if (weapon == "5")
 										{
 											rightHandWeaponEquiped = "Thief's Shortblade";
+											rightHandWeaponType = "Shortblade";
 											rightHandWeaponStatsAtkPhy = 14;
 											rightHandWeaponStatsAtkMag = 1;
 											rightHandWeaponStatsDefPhy = 6;
@@ -1190,6 +1197,7 @@ namespace Shadow_Warriors
 										else if (weapon == "6")
 										{
 											rightHandWeaponEquiped = "Unarmed";
+											rightHandWeaponType = "None";
 											rightHandWeaponStatsAtkPhy = 3;
 											rightHandWeaponStatsAtkMag = 0;
 											rightHandWeaponStatsDefPhy = 1;
@@ -1212,6 +1220,9 @@ namespace Shadow_Warriors
 							Console.Clear();
 							int selection1 = 1;
 							int selection2 = 1;
+							bool menu = false;
+							#region Tutorial
+#region Temp Tutor
 							if (choice == "yes" || choice == "Yes" || choice == "Y" || choice == "y")
 							{
 								Console.ForegroundColor = ConsoleColor.Cyan;
@@ -1455,6 +1466,11 @@ namespace Shadow_Warriors
 								Console.WriteLine("Good luck and have fun");
 								Thread.Sleep(8000);
 								Console.Clear();
+								#endregion
+								int tempStorage = 0;
+								int Damage = 0;
+								string ActiveEffect = "";
+								bool skipp = false;
 								int DummyHp = 250;
 								while (DummyHp > 0 && Hp > 0)
 								{
@@ -1488,70 +1504,391 @@ namespace Shadow_Warriors
 									Console.WriteLine();
 									Console.WriteLine();
 									Console.ResetColor();
-									if (selection1 <= 1)
+									bool existence = true;
+									bool choice2 = false;
+									int itemSelect1 = 1;
+									int itemSelect2 = 1;
+									if (menu == false)
 									{
-										selection1 = 1;
-										Console.WriteLine("  _________    _________     ________    _________");
-										Console.WriteLine("	|		  |	 |		   |   | 	    |  |		 |");
-										Console.WriteLine("	| Attack  |  |	Magic  |   |  Item	|  |   Run	 |");
-										Console.WriteLine("	|	 X	  |	 |		   |   |		|  |		 |");
-										Console.WriteLine(" |_________|  |_________|   |________|  |_________|");
+										if (selection1 <= 1)
+										{
+											selection1 = 1;
+											Console.WriteLine("  _________    _________     ________    _________");
+											Console.WriteLine("	|		  |	 |		   |   | 	    |  |		 |");
+											Console.WriteLine("	| Attack  |  |	Magic  |   |  Item	|  |   Run	 |");
+											Console.WriteLine("	|	 X	  |	 |		   |   |		|  |		 |");
+											Console.WriteLine(" |_________|  |_________|   |________|  |_________|");
+										}
+										else if (selection1 == 2)
+										{
+											Console.WriteLine("  _________    _________     ________    _________");
+											Console.WriteLine("	|		  |	 |		   |   | 	    |  |		 |");
+											Console.WriteLine("	| Attack  |  |	Magic  |   |  Item	|  |   Run	 |");
+											Console.WriteLine("	|	 	  |	 |	  X    |   |		|  |		 |");
+											Console.WriteLine(" |_________|  |_________|   |________|  |_________|");
+										}
+										else if (selection1 == 3)
+										{
+											Console.WriteLine("  _________    _________     ________    _________");
+											Console.WriteLine("	|		  |	 |		   |   | 	    |  |		 |");
+											Console.WriteLine("	| Attack  |  |	Magic  |   |  Item	|  |   Run	 |");
+											Console.WriteLine("	|	 	  |	 |		   |   |	X	|  |		 |");
+											Console.WriteLine(" |_________|  |_________|   |________|  |_________|");
+										}
+										else if (selection1 >= 4)
+										{
+											selection1 = 4;
+											Console.WriteLine("  _________    _________     ________    _________");
+											Console.WriteLine("	|		  |	 |		   |   | 	    |  |		 |");
+											Console.WriteLine("	| Attack  |  |	Magic  |   |  Item	|  |   Run	 |");
+											Console.WriteLine("	|	 	  |	 |		   |   |		|  |	X	 |");
+											Console.WriteLine(" |_________|  |_________|   |________|  |_________|");
+										}
+										ConsoleKeyInfo info = Console.ReadKey();
+										if (info.Key == ConsoleKey.RightArrow)
+										{
+											selection1++;
+										}
+										else if (info.Key == ConsoleKey.LeftArrow)
+										{
+											selection1--;
+										}
+										else if (info.Key == ConsoleKey.Enter)
+										{
+											menu = true;
+										}
+										Console.Clear();
 									}
-									else if (selection1 == 2)
+									else if (menu == true)
 									{
-										Console.WriteLine("  _________    _________     ________    _________");
-										Console.WriteLine("	|		  |	 |		   |   | 	    |  |		 |");
-										Console.WriteLine("	| Attack  |  |	Magic  |   |  Item	|  |   Run	 |");
-										Console.WriteLine("	|	 	  |	 |	  X    |   |		|  |		 |");
-										Console.WriteLine(" |_________|  |_________|   |________|  |_________|");
-									}
-									else if (selection1 == 3)
-									{
-										Console.WriteLine("  _________    _________     ________    _________");
-										Console.WriteLine("	|		  |	 |		   |   | 	    |  |		 |");
-										Console.WriteLine("	| Attack  |  |	Magic  |   |  Item	|  |   Run	 |");
-										Console.WriteLine("	|	 	  |	 |		   |   |	X	|  |		 |");
-										Console.WriteLine(" |_________|  |_________|   |________|  |_________|");
-									}
-									else if (selection1 >= 4)
-									{
-										selection1 = 4;
-										Console.WriteLine("  _________    _________     ________    _________");
-										Console.WriteLine("	|		  |	 |		   |   | 	    |  |		 |");
-										Console.WriteLine("	| Attack  |  |	Magic  |   |  Item	|  |   Run	 |");
-										Console.WriteLine("	|	 	  |	 |		   |   |		|  |	X	 |");
-										Console.WriteLine(" |_________|  |_________|   |________|  |_________|");
-									}
-									ConsoleKeyInfo info = Console.ReadKey();
-									if (info.Key == ConsoleKey.RightArrow)
-									{
-										selection1++;
-									}
-									else if (info.Key == ConsoleKey.LeftArrow)
-									{
-										selection1--;
-									}
-									else if (info.Key == ConsoleKey.Enter)
-									{
+										
 										if (selection1 == 1)
 										{
 
 										}
 										else if (selection1 == 2)
 										{
-
-										}
+											int spellCount = 0;
+											if (type > 1 && type < 2)
+											{
+												spellCount = Magic.Count;
+												if (spellCount == 2)
+												{
+													if (selection2 == 1)
+													{
+														Console.WriteLine("		____________	   _____________");
+														Console.WriteLine("	   |            |     |             |");
+														Console.WriteLine("	   |            |     |             |");
+														Console.WriteLine("	   |" + Magic[0] + "|     |" + Magic[1] + "|");
+														Console.WriteLine("	   |      X     |     |             |");
+														Console.WriteLine("	   |____________|	  |_____________|");
+													}
+													else if (selection2 == 2)
+													{
+														Console.WriteLine("		____________	   _____________");
+														Console.WriteLine("	   |            |     |             |");
+														Console.WriteLine("	   |            |     |             |");
+														Console.WriteLine("	   |" + Magic[0] + "|     |" + Magic[1] + "|");
+														Console.WriteLine("	   |            |     |      X      |");
+														Console.WriteLine("	   |____________|	  |_____________|");
+													}
+												}
+												else if (spellCount == 3)
+												{
+													if (selection2 == 1)
+													{
+														Console.WriteLine("		____________	   _____________	   _____________");
+														Console.WriteLine("	   |            |     |             |     |             |");
+														Console.WriteLine("	   |            |     |             |     |             |");
+														Console.WriteLine("	   |" + Magic[0] + "|     |" + Magic[1] + "|     |" + Magic[2] + "|");
+														Console.WriteLine("	   |      X     |     |             |     |             |");
+														Console.WriteLine("	   |____________|	  |_____________|	  |_____________|");
+													}
+													else if (selection2 == 2)
+													{
+														Console.WriteLine("		____________	   _____________	   _____________");
+														Console.WriteLine("	   |            |     |             |     |             |");
+														Console.WriteLine("	   |            |     |             |     |             |");
+														Console.WriteLine("	   |" + Magic[0] + "|     |" + Magic[1] + "|     |" + Magic[2] + "|");
+														Console.WriteLine("	   |            |     |      X      |     |             |");
+														Console.WriteLine("	   |____________|	  |_____________|	  |_____________|");
+													}
+													else if (selection2 == 3)
+													{
+														Console.WriteLine("		____________	   _____________	   _____________");
+														Console.WriteLine("	   |            |     |             |     |             |");
+														Console.WriteLine("	   |            |     |             |     |             |");
+														Console.WriteLine("	   |" + Magic[0] + "|     |" + Magic[1] + "|     |" + Magic[2] + "|");
+														Console.WriteLine("	   |            |     |             |     |      X      |");
+														Console.WriteLine("	   |____________|	  |_____________|	  |_____________|");
+													}
+												}
+											} //starter mages spells
+											else
+											{
+												Console.WriteLine("You haven't learned any spells yet");
+												menu = false;
+												Thread.Sleep(3000);
+												existence = false;
+											} // Starting class has no spells
+										} //Magic
 										else if (selection1 == 3)
 										{
-
-										}
+											if (choice2 == false)
+											{
+												if (selection2 <= 1)
+												{
+													selection2 = 1;
+													Console.WriteLine("  __________		  ___________");
+													Console.WriteLine(" |          |     |           |");
+													Console.WriteLine(" |  Potions |     |   Charms  |");
+													Console.WriteLine(" |     X    |     |           |");
+													Console.WriteLine(" |__________|     |___________|");
+												}
+												else if (selection2 >= 2)
+												{
+													selection2 = 2;
+													Console.WriteLine("  __________		  ___________");
+													Console.WriteLine(" |          |     |           |");
+													Console.WriteLine(" |  Potions |     |   Charms  |");
+													Console.WriteLine(" |          |     |      X    |");
+													Console.WriteLine(" |__________|     |___________|");
+												}
+											} // selecting item type
+											else if (choice2 == true)
+											{
+												if (itemSelect1 == 1)
+												{
+													int potionNum = 0;
+													potionNum = Potions.Count;
+													if (potionNum == 1)
+													{
+														if (itemSelect2 <= 1 || itemSelect2 >= 1)
+														{
+															itemSelect2 = 1;
+															Console.WriteLine("  __________	");
+															Console.WriteLine(" |          |");
+															Console.WriteLine(" |  " + Potions[0] + " |");
+															Console.WriteLine(" |     X    |");
+															Console.WriteLine(" |__________|");
+														}
+													}
+													else if (potionNum == 2)
+													{
+														if (itemSelect2 <= 1)
+														{
+															itemSelect2 = 1;
+															Console.WriteLine("  __________			 __________");
+															Console.WriteLine(" |          |		|          |");
+															Console.WriteLine(" |  " + Potions[0] + " |		|  " + Potions[1] + " |");
+															Console.WriteLine(" |     X    |		|          |");
+															Console.WriteLine(" |__________|		|__________|");
+														}
+														else if (itemSelect2 >= 2)
+														{
+															itemSelect2 = 2;
+															Console.WriteLine("  __________			 __________");
+															Console.WriteLine(" |          |		|          |");
+															Console.WriteLine(" |  " + Potions[0] + " |		|  " + Potions[1] + " |");
+															Console.WriteLine(" |          |		|     X    |");
+															Console.WriteLine(" |__________|		|__________|");
+														}
+													}
+													else if (potionNum == 3)
+													{
+														if (itemSelect2 <= 1)
+														{
+															itemSelect2 = 1;
+															Console.WriteLine("  __________			 __________			 __________");
+															Console.WriteLine(" |          |		|          |		|          |");
+															Console.WriteLine(" |  " + Potions[0] + " |		|  " + Potions[1] + " |		|  " + Potions[2] + " |");
+															Console.WriteLine(" |    X     |		|          |		|          |");
+															Console.WriteLine(" |__________|		|__________|		|__________|");
+														}
+														else if (itemSelect2 == 2)
+														{
+															Console.WriteLine("  __________			 __________			 __________");
+															Console.WriteLine(" |          |		|          |		|          |");
+															Console.WriteLine(" |  " + Potions[0] + " |		|  " + Potions[1] + " |		|  " + Potions[2] + " |");
+															Console.WriteLine(" |          |		|     X    |		|          |");
+															Console.WriteLine(" |__________|		|__________|		|__________|");
+														}
+														else if (itemSelect2 >= 3)
+														{
+															itemSelect2 = 3;
+															Console.WriteLine("  __________			 __________			 __________");
+															Console.WriteLine(" |          |		|          |		|          |");
+															Console.WriteLine(" |  " + Potions[0] + " |		|  " + Potions[1] + " |		|  " + Potions[2] + " |");
+															Console.WriteLine(" |          |		|          |		|     X    |");
+															Console.WriteLine(" |__________|		|__________|		|__________|");
+														}
+													}
+													else if (potionNum == 4)
+													{
+														if (itemSelect2 <= 1)
+														{
+															itemSelect2 = 1;
+															Console.WriteLine("  __________			 __________			 __________ 		 __________");
+															Console.WriteLine(" |          |		|          |		|          |		|          |");
+															Console.WriteLine(" |  " + Potions[0] + " |		|  " + Potions[1] + " |		|  " + Potions[2] + " |		|  " + Potions[3] + " |");
+															Console.WriteLine(" |    X     |		|          |		|          |		|          |");
+															Console.WriteLine(" |__________|		|__________|		|__________|		|__________|");
+														}
+														else if (itemSelect2 == 2)
+														{
+															Console.WriteLine("  __________			 __________			 __________ 		 __________");
+															Console.WriteLine(" |          |		|          |		|          |		|          |");
+															Console.WriteLine(" |  " + Potions[0] + " |		|  " + Potions[1] + " |		|  " + Potions[2] + " |		|  " + Potions[3] + " |");
+															Console.WriteLine(" |          |		|     X    |		|          |		|          |");
+															Console.WriteLine(" |__________|		|__________|		|__________|		|__________|");
+														}
+														else if (itemSelect2 == 3)
+														{
+															Console.WriteLine("  __________			 __________			 __________ 		 __________");
+															Console.WriteLine(" |          |		|          |		|          |		|          |");
+															Console.WriteLine(" |  " + Potions[0] + " |		|  " + Potions[1] + " |		|  " + Potions[2] + " |		|  " + Potions[3] + " |");
+															Console.WriteLine(" |          |		|          |		|     X    |		|          |");
+															Console.WriteLine(" |__________|		|__________|		|__________|		|__________|");
+														}
+														else if (itemSelect2 >= 4)
+														{
+															itemSelect2 = 4;
+															Console.WriteLine("  __________			 __________			 __________ 		 __________");
+															Console.WriteLine(" |          |		|          |		|          |		|          |");
+															Console.WriteLine(" |  " + Potions[0] + " |		|  " + Potions[1] + " |		|  " + Potions[2] + " |		|  " + Potions[3] + " |");
+															Console.WriteLine(" |          |		|          |		|          |		|     X    |");
+															Console.WriteLine(" |__________|		|__________|		|__________|		|__________|");
+														}
+													}
+													else if (potionNum == 0)
+													{
+														existence = false;
+														Console.WriteLine("You have no potions");
+														menu = false;
+													}
+												}
+												else if (itemSelect1 == 2)
+												{
+												}
+											} //item type already chosen. Choosing specific item
+										}//Items
 										else if (selection1 == 4)
 										{
-
+											Console.WriteLine("HEY! No running away. You wanted this tutorial, so you are going to complete it!");
+											menu = false;
+											existence = false;
+										}//Run
+										if (existence == true)
+										{
+											ConsoleKeyInfo info = Console.ReadKey();
+											if (info.Key == ConsoleKey.RightArrow)
+											{
+												if (selection1 == 2)
+												{
+													selection2++;
+												}
+												else if (selection1 == 3)
+												{
+													if (choice2 == false)
+													{
+														selection2++;
+													}
+													else if (choice2 == true)
+													{
+														itemSelect2++;
+													}
+												}
+											}
+											else if (info.Key == ConsoleKey.LeftArrow)
+											{
+												if (selection1 == 2)
+												{
+													selection2--;
+												}
+												else if (selection1 == 3)
+												{
+													if (choice2 == false)
+													{
+														selection2--;
+													}
+													else if (choice2 == true)
+													{
+														itemSelect2--;
+													}
+												}
+											}
+											else if (info.Key == ConsoleKey.Enter)
+											{
+												if (selection1 == 2)
+												{
+													if (selection2 == 1)
+													{
+														Console.WriteLine("You cast " + Magic[0]);
+														if (rightHandWeaponType == "Staff")
+														{
+															if (MagicType[0] == "Fire")
+															{
+																string[] numbers = Regex.Split(MagicEffect[0], @"\D+");
+																foreach (string value in numbers)
+																{
+																	if (!string.IsNullOrEmpty(value))
+																	{
+																		tempStorage = int.Parse(value);
+																	}
+																}
+																Damage = tempStorage + rightHandWeaponStatsAtkMag;
+															}
+														}
+													}
+													else if (selection2 == 2)
+													{
+														Console.WriteLine("You cast " + Magic[1]);
+														if (rightHandWeaponType == "Staff")
+														{
+															if (MagicType[1] == "Fire")
+															{
+																string[] numbers = Regex.Split(MagicEffect[1], @"\D+");
+																foreach (string value in numbers)
+																{
+																	if (!string.IsNullOrEmpty(value))
+																	{
+																		tempStorage = int.Parse(value);
+																	}
+																}
+																Damage = tempStorage + rightHandWeaponStatsAtkMag;
+															}
+														}
+													}
+													else if (selection2 == 3)
+													{
+														Console.WriteLine("You cast " + Magic[2]);
+														if (rightHandWeaponType == "Staff")
+														{
+															if (MagicType[2] == "Necromancy")
+															{
+																string[] numbers = Regex.Split(MagicEffect[1], @"\D+");
+																foreach (string value in numbers)
+																{
+																	if (!string.IsNullOrEmpty(value))
+																	{
+																		tempStorage = int.Parse(value);
+																	}
+																}
+																Damage = tempStorage + rightHandWeaponStatsAtkMag;
+															}
+														}
+													}
+													if (rightHandWeaponStatsExtraEffect == "Strengthen Magic: All" && Damage > 0)
+													{
+														Damage = Damage + 2;
+													}
+												}
+											}
 										}
 									}
 								}
 							}
+							#endregion
 						}
 					}
 					#endregion
