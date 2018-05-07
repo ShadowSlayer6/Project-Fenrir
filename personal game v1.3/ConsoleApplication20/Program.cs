@@ -1468,9 +1468,14 @@ namespace Shadow_Warriors
 								Console.Clear();
 								#endregion
 								int tempStorage = 0;
+								int Heal = 0;
 								int Damage = 0;
+								int SoulCounter = 0;
+								int ShatterCount = 0;
 								string ActiveEffect = "";
+								int CoolDown = 0;
 								bool skipp = false;
+								bool risen = false;
 								int DummyHp = 250;
 								while (DummyHp > 0 && Hp > 0)
 								{
@@ -1837,6 +1842,59 @@ namespace Shadow_Warriors
 																	}
 																}
 																Damage = tempStorage + rightHandWeaponStatsAtkMag;
+																ActiveEffect = "Scorch";
+															}
+															else if (MagicType[0] == "Time")
+															{
+																string[] numbers = Regex.Split(MagicEffect[0], @"\D+");
+																foreach (string value in numbers)
+																{
+																	if (!string.IsNullOrEmpty(value))
+																	{
+																		tempStorage = int.Parse(value);
+																	}
+																}
+																Damage = tempStorage + rightHandWeaponStatsAtkMag;
+																CoolDown = 3;
+															}
+															else if (MagicType[0] == "Shadow")
+															{
+																string[] numbers = Regex.Split(MagicEffect[0], @"\D+");
+																foreach (string value in numbers)
+																{
+																	if (!string.IsNullOrEmpty(value))
+																	{
+																		tempStorage = int.Parse(value);
+																	}
+																}
+																Damage = tempStorage + rightHandWeaponStatsAtkMag;
+																ActiveEffect = "Stolen Life";
+															}
+															else if (MagicType[0] == "Storm")
+															{
+																string[] numbers = Regex.Split(MagicEffect[0], @"\D+");
+																foreach (string value in numbers)
+																{
+																	if (!string.IsNullOrEmpty(value))
+																	{
+																		tempStorage = int.Parse(value);
+																	}
+																}
+																Damage = tempStorage + rightHandWeaponStatsAtkMag;
+																ActiveEffect = "Energize-Paralysis";
+															}
+															else if (MagicType[0] == "Necromancy")
+															{
+																string[] numbers = Regex.Split(MagicEffect[0], @"\D+");
+																foreach (string value in numbers)
+																{
+																	if (!string.IsNullOrEmpty(value))
+																	{
+																		tempStorage = int.Parse(value);
+																	}
+																}
+																Damage = tempStorage + rightHandWeaponStatsAtkMag;
+																ActiveEffect = "Death 1";
 															}
 														}
 													}
@@ -1857,6 +1915,85 @@ namespace Shadow_Warriors
 																}
 																Damage = tempStorage + rightHandWeaponStatsAtkMag;
 															}
+															else if (MagicType[1] == "Time")
+															{
+																string[] numbers = Regex.Split(MagicEffect[0], @"\D+");
+																foreach (string value in numbers)
+																{
+																	if (!string.IsNullOrEmpty(value))
+																	{
+																		tempStorage = int.Parse(value);
+																	}
+																}
+																Heal = tempStorage;
+															}
+															else if (MagicType[1] == "Shadow")
+															{
+																string[] numbers = Regex.Split(MagicEffect[0], @"\D+");
+																foreach (string value in numbers)
+																{
+																	if (!string.IsNullOrEmpty(value))
+																	{
+																		tempStorage = int.Parse(value);
+																	}
+																}
+																phyDef = phyDef + tempStorage;
+																ActiveEffect = "Shatter";
+																ShatterCount = 3;
+															}
+															else if (MagicType[1] == "Storm")
+															{
+																string[] numbers = Regex.Split(MagicEffect[0], @"\D+");
+																foreach (string value in numbers)
+																{
+																	if (!string.IsNullOrEmpty(value))
+																	{
+																		tempStorage = int.Parse(value);
+																	}
+																}
+																Damage = tempStorage + rightHandWeaponStatsAtkMag;
+																ActiveEffect = "Magnifies";
+															}
+															else if (MagicType[1] == "Necromancy" && SoulCounter > 0)
+															{
+																string[] numbers = Regex.Split(MagicEffect[0], @"\D+");
+																foreach (string value in numbers)
+																{
+																	if (!string.IsNullOrEmpty(value))
+																	{
+																		tempStorage = int.Parse(value);
+																	}
+																}
+																Damage = tempStorage + rightHandWeaponStatsAtkMag;
+																ActiveEffect = "Unstable";
+																ShatterCount = 6;
+															}
+															else if (MagicType[1] == "Necromancy" && SoulCounter <= 0)
+															{
+																Console.WriteLine("This spell requires one soul to cast");
+																Console.WriteLine("You currently have 0");
+																Console.WriteLine("Would you like to cast it anyways?");
+																choice = Console.ReadLine();
+																if (choice == "yes" || choice == "Yes" || choice == "Y" || choice == "y" || choice == "YES")
+																{
+																	Hp = 1;
+																	string[] numbers = Regex.Split(MagicEffect[0], @"\D+");
+																	foreach (string value in numbers)
+																	{
+																		if (!string.IsNullOrEmpty(value))
+																		{
+																			tempStorage = int.Parse(value);
+																		}
+																	}
+																	Damage = tempStorage + rightHandWeaponStatsAtkMag;
+																	ActiveEffect = "Unstable";
+																	ShatterCount = 6;
+																}
+																else
+																{
+																	Console.WriteLine("Your spell failed to activate and fizzled");
+																}
+															}
 														}
 													}
 													else if (selection2 == 3)
@@ -1875,12 +2012,17 @@ namespace Shadow_Warriors
 																	}
 																}
 																Damage = tempStorage + rightHandWeaponStatsAtkMag;
+																ActiveEffect = "Chorus";
 															}
 														}
 													}
 													if (rightHandWeaponStatsExtraEffect == "Strengthen Magic: All" && Damage > 0)
 													{
 														Damage = Damage + 2;
+													}
+													if (selection2 == 3 && risen == true)
+													{
+														Damage = Damage + 3;
 													}
 												}
 											}
