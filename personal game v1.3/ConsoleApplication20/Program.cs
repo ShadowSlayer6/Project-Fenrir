@@ -1468,15 +1468,23 @@ namespace Shadow_Warriors
 								Console.Clear();
 								#endregion
 								int tempStorage = 0;
+								int potionNum = 0;
 								int Heal = 0;
 								int Damage = 0;
+								int shatterDamage = 0;
+								int sharpen = 0;
+								int x = 0;
+								int Unstable = 0;
 								int SoulCounter = 0;
 								int ShatterCount = 0;
 								string ActiveEffect = "";
 								int CoolDown = 0;
 								bool skipp = false;
 								bool risen = false;
+								bool Energize = false;
+								bool Scorch = false;
 								int DummyHp = 250;
+								int magnify = 0; ;
 								while (DummyHp > 0 && Hp > 0)
 								{
 									Console.WriteLine("					Practice Dummy				");
@@ -1664,7 +1672,7 @@ namespace Shadow_Warriors
 											{
 												if (itemSelect1 == 1)
 												{
-													int potionNum = 0;
+													potionNum = 0;
 													potionNum = Potions.Count;
 													if (potionNum == 1)
 													{
@@ -1824,10 +1832,31 @@ namespace Shadow_Warriors
 											}
 											else if (info.Key == ConsoleKey.Enter)
 											{
-												if (selection1 == 2)
+												if (selection1 == 1)
+												{
+													Damage = rightHandWeaponStatsAtkPhy;
+													if (rightHandWeaponType == "Sword" && ActiveEffect == "Blade: Sharpen")
+													{
+														if (sharpen < 2)
+														{
+															sharpen++;
+														}
+														Damage = Damage + (2 * sharpen);
+													}
+													else if (rightHandWeaponType == "Mace" && ActiveEffect == "Add Damage: Pure")
+													{
+														Damage = Damage + 4;
+													}
+													else if (rightHandWeaponType == "Shortblade")
+													{
+														ActiveEffect = "Pierce";
+													}
+												}
+												else if (selection1 == 2)
 												{
 													if (selection2 == 1)
 													{
+														x = 0;
 														Console.WriteLine("You cast " + Magic[0]);
 														if (rightHandWeaponType == "Staff")
 														{
@@ -1843,6 +1872,7 @@ namespace Shadow_Warriors
 																}
 																Damage = tempStorage + rightHandWeaponStatsAtkMag;
 																ActiveEffect = "Scorch";
+																Scorch = true;
 															}
 															else if (MagicType[0] == "Time")
 															{
@@ -1900,6 +1930,7 @@ namespace Shadow_Warriors
 													}
 													else if (selection2 == 2)
 													{
+														x = 1;
 														Console.WriteLine("You cast " + Magic[1]);
 														if (rightHandWeaponType == "Staff")
 														{
@@ -1917,15 +1948,23 @@ namespace Shadow_Warriors
 															}
 															else if (MagicType[1] == "Time")
 															{
-																string[] numbers = Regex.Split(MagicEffect[0], @"\D+");
-																foreach (string value in numbers)
+																if (CoolDown == 0)
 																{
-																	if (!string.IsNullOrEmpty(value))
+																	string[] numbers = Regex.Split(MagicEffect[0], @"\D+");
+																	foreach (string value in numbers)
 																	{
-																		tempStorage = int.Parse(value);
+																		if (!string.IsNullOrEmpty(value))
+																		{
+																			tempStorage = int.Parse(value);
+																		}
 																	}
+																	Heal = tempStorage;
+																	CoolDown = 3;
 																}
-																Heal = tempStorage;
+																else if (CoolDown != 0)
+																{
+																	Console.WriteLine("The spell fizzled because it was used recently");
+																}
 															}
 															else if (MagicType[1] == "Shadow")
 															{
@@ -1966,7 +2005,8 @@ namespace Shadow_Warriors
 																}
 																Damage = tempStorage + rightHandWeaponStatsAtkMag;
 																ActiveEffect = "Unstable";
-																ShatterCount = 6;
+																Unstable = 6;
+																risen = true;
 															}
 															else if (MagicType[1] == "Necromancy" && SoulCounter <= 0)
 															{
@@ -1987,7 +2027,8 @@ namespace Shadow_Warriors
 																	}
 																	Damage = tempStorage + rightHandWeaponStatsAtkMag;
 																	ActiveEffect = "Unstable";
-																	ShatterCount = 6;
+																	Unstable = 6;
+																	risen = true;
 																}
 																else
 																{
@@ -1998,6 +2039,7 @@ namespace Shadow_Warriors
 													}
 													else if (selection2 == 3)
 													{
+														x = 2;
 														Console.WriteLine("You cast " + Magic[2]);
 														if (rightHandWeaponType == "Staff")
 														{
@@ -2024,7 +2066,40 @@ namespace Shadow_Warriors
 													{
 														Damage = Damage + 3;
 													}
+													if (Energize == true && MagicType[x] == "Storm")
+													{
+														Damage = Damage + 10;
+														Energize = false;
+													}
+													else if (Energize == true && MagicType[x] != "Storm")
+													{
+														Damage = Damage + 5;
+														Energize = false;
+													}
+													if (ActiveEffect == "Stolen Life")
+													{
+														Heal = Damage / 4;
+													}
 												}
+												else if (selection1 == 3)
+												{
+													if (Potions[itemSelect2] == "Beserker's Rage")
+													{
+													}
+													else if (Potions[itemSelect2] == "Mage's Cloak")
+													{
+													}
+													else if (Potions[itemSelect2] == "Godly Blessing")
+													{
+													}
+													else if (Potions[itemSelect2] == "Thief's Smoke Screen")
+													{
+													}
+												}
+											}
+											if (Scorch == true)
+											{
+												Damage = Damage + 4;
 											}
 										}
 									}
