@@ -40,12 +40,12 @@ namespace Shadow_Warriors
 				string Class_Name = "blank";
 				#region New Game Loop
 				#region Start Up
-				string EquipedArmour;
-				int EquipedArmourStatsPhyDef;
-				int EquipedArmourStatsMagDef;
-				string EquipedArmourStatsEffectName;
-				int EquipedArmourStatsEffectNum;
-				string EquipedArmourType;
+				string EquipedArmour = "";
+				int EquipedArmourStatsPhyDef = 0;
+				int EquipedArmourStatsMagDef = 0;
+				string EquipedArmourStatsEffectName = "";
+				int EquipedArmourStatsEffectNum = 0;
+				string EquipedArmourType = "";
 				string name;
 				int dif = 5;
 				bool skip = false;
@@ -875,6 +875,7 @@ namespace Shadow_Warriors
 							List<int> inventoryNums = new List<int>();
 							List<string> Items = new List<string>();
 							List<string> Potions = new List<string>();
+							List<int> PotionsUse = new List<int>();
 							List<string> Armour = new List<string>();
 							List<int> ArmourDefence = new List<int>();
 							List<string> ArmourType = new List<string>();
@@ -1205,9 +1206,13 @@ namespace Shadow_Warriors
 											rightHandWeaponStatsExtraEffect = "Increase Defence: Tier 1";
 											rightHandWeaponStatsExtraNum = 1;
 											Potions.Add("Beserker's Rage");
+											PotionsUse.Add(4);
 											Potions.Add("Mage's Cloak");
+											PotionsUse.Add(4);
 											Potions.Add("Godly Blessing");
+											PotionsUse.Add(3);
 											Potions.Add("Thief's Smoke Screen");
+											PotionsUse.Add(3);
 										} //Unarmed
 										break;
 									}
@@ -1471,20 +1476,35 @@ namespace Shadow_Warriors
 								int potionNum = 0;
 								int Heal = 0;
 								int Damage = 0;
+								int Duration1 = 0;
+								int Duration2 = 0;
 								int shatterDamage = 0;
 								int sharpen = 0;
 								int x = 0;
 								int Unstable = 0;
 								int SoulCounter = 0;
 								int ShatterCount = 0;
+								int HitStorage = 0;
+								double tempHp = maxHp;
+								double EnemyAcc = 50;
+								double PlayerAcc = 60;
+								bool PotionCloak = false;
 								string ActiveEffect = "";
+								bool PotionShield = false;
+								bool PotionRage = false;
+								bool use1 = false;
+								bool Something = false; // used to recognize wether player has completed their turn
 								int CoolDown = 0;
+								bool Hit = false;
 								bool skipp = false;
 								bool risen = false;
 								bool Energize = false;
 								bool Scorch = false;
 								int DummyHp = 250;
+								int DummyDef = 10;
 								int magnify = 0; ;
+								double ExtraDef = 0;
+								Random Accurite = new Random();
 								while (DummyHp > 0 && Hp > 0)
 								{
 									Console.WriteLine("					Practice Dummy				");
@@ -1673,7 +1693,7 @@ namespace Shadow_Warriors
 												if (itemSelect1 == 1)
 												{
 													potionNum = 0;
-													potionNum = Potions.Count;
+													potionNum = PotionsUse.Count;
 													if (potionNum == 1)
 													{
 														if (itemSelect2 <= 1 || itemSelect2 >= 1)
@@ -1851,6 +1871,7 @@ namespace Shadow_Warriors
 													{
 														ActiveEffect = "Pierce";
 													}
+													Something = true;
 												}
 												else if (selection1 == 2)
 												{
@@ -2080,21 +2101,50 @@ namespace Shadow_Warriors
 													{
 														Heal = Damage / 4;
 													}
+													if (PotionCloak == true && Damage > 0)
+													{
+														Damage = Damage + 3;
+														PotionCloak = false;
+													}
+													Something = true;
 												}
 												else if (selection1 == 3)
 												{
-													if (Potions[itemSelect2] == "Beserker's Rage")
+													if (Potions[itemSelect2] == "Beserker's Rage" && PotionRage == false)
 													{
+														Duration1 = 3;
+														Duration2 = 4;
+														rightHandWeaponStatsAtkPhy = rightHandWeaponStatsAtkPhy * 3;
+														PotionShield = true;
+														PotionRage = true;
 													}
 													else if (Potions[itemSelect2] == "Mage's Cloak")
 													{
+														Duration1 = 1;
+														Duration2 = 3;
+														PotionCloak = true;
+														magDef = magDef + 10;
 													}
 													else if (Potions[itemSelect2] == "Godly Blessing")
 													{
+														Duration1 = 0;
+														Duration2 = 999;
+														Hp = maxHp;
+														if (use1 == false)
+														{
+															tempHp = maxHp + (maxHp * .30);
+															use1 = true;
+														}
+														Hp = Convert.ToInt32(tempHp);
 													}
 													else if (Potions[itemSelect2] == "Thief's Smoke Screen")
 													{
+														Duration1 = 2;
+														EnemyAcc = EnemyAcc * .15;
+														PlayerAcc = PlayerAcc * .15;
 													}
+													PotionsUse[itemSelect2] = PotionsUse[itemSelect2] - 1;
+													Something = true;
 												}
 											}
 											if (Scorch == true)
@@ -2102,6 +2152,66 @@ namespace Shadow_Warriors
 												Damage = Damage + 4;
 											}
 										}
+									}
+									if (Damage > 0)
+									{
+										HitStorage = Accurite.Next(0, 100);
+										if (HitStorage >= 0 && HitStorage <= PlayerAcc)
+										{
+											Hit = true;
+										}
+										if (Hit == true)
+										{
+											DummyHp = Convert.ToInt32(DummyHp - (Damage * (DummyDef / 100)));
+										}
+										Damage = 0;
+									}
+									if (Heal > 0)
+									{
+										Hp = Hp + Heal;
+										if (Hp > maxHp && use1 == false)
+										{
+											Hp = maxHp;
+										}
+										else if (Hp > maxHp && use1 == true)
+										{
+											if (Hp > tempHp)
+											{
+												Hp = Convert.ToInt32(tempHp);
+											}
+										}
+									}
+									if (Something == true)
+									{
+										Console.WriteLine("The Animated Dummy raises it wooden sword and attacks");
+										if (Hp < 10)
+										{
+											HitStorage = Accurite.Next(0, 200);
+											EnemyAcc = 15;
+										}
+										else
+										{
+											HitStorage = Accurite.Next(0, 100);
+											EnemyAcc = 50;
+										}
+										if (HitStorage >= 0 && HitStorage <= EnemyAcc)
+										{
+											Hit = true;
+										}
+										if (Hit == true)
+										{
+											if (EquipedArmourStatsEffectName == "Incompassing Shadows")
+											{
+												ExtraDef = .04;
+											}
+											Hp = Convert.ToInt32(Hp - (40 * ((EquipedArmourStatsPhyDef / 100) + ExtraDef)));
+											if (EquipedArmourStatsEffectName == "Altered Armour")
+											{
+												EquipedArmourStatsPhyDef = EquipedArmourStatsPhyDef - 1;
+												PlayerAcc = PlayerAcc + 2;
+											}
+										}
+
 									}
 								}
 							}
