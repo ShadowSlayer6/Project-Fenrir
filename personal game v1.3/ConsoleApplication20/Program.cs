@@ -1496,6 +1496,7 @@ namespace Shadow_Warriors
 								bool Something = false; // used to recognize wether player has completed their turn
 								int CoolDown = 0;
 								bool Hit = false;
+								bool Ignite = false;
 								bool skipp = false;
 								bool risen = false;
 								bool Energize = false;
@@ -1505,6 +1506,8 @@ namespace Shadow_Warriors
 								int magnify = 0; ;
 								double ExtraDef = 0;
 								Random Accurite = new Random();
+								Random AttackType = new Random();
+								string EnemyAtk = "";
 								while (DummyHp > 0 && Hp > 0)
 								{
 									Console.WriteLine("					Practice Dummy				");
@@ -2079,6 +2082,33 @@ namespace Shadow_Warriors
 															}
 														}
 													}
+													if (EquipedArmourStatsEffectName == "Crack Time")
+													{
+														Damage = Convert.ToInt32(Damage + (Damage * .09));
+													}
+													else if (EquipedArmourStatsEffectName == "Blazen Ash")
+													{
+														if (Ignite == true)
+														{
+															Damage = Convert.ToInt32(Damage + (Damage * .20));
+														}
+														else
+														{
+															Damage = Convert.ToInt32(Damage + (Damage * .07));
+														}
+													}
+													else if (EquipedArmourStatsEffectName == "Incompassing Shadows")
+													{
+														Damage = Convert.ToInt32(Damage + (Damage * .1));
+													}
+													else if (EquipedArmourStatsEffectName == "Electric Release")
+													{
+														Damage = Convert.ToInt32(Damage + (Damage * .12));
+													}
+													else if (EquipedArmourStatsEffectName == "Reinforcing Soul")
+													{
+														Damage = Convert.ToInt32(Damage + (Damage * .05));
+													}
 													if (rightHandWeaponStatsExtraEffect == "Strengthen Magic: All" && Damage > 0)
 													{
 														Damage = Damage + 2;
@@ -2106,6 +2136,7 @@ namespace Shadow_Warriors
 														Damage = Damage + 3;
 														PotionCloak = false;
 													}
+													
 													Something = true;
 												}
 												else if (selection1 == 3)
@@ -2183,7 +2214,41 @@ namespace Shadow_Warriors
 									}
 									if (Something == true)
 									{
-										Console.WriteLine("The Animated Dummy raises it wooden sword and attacks");
+										string atkElem = "";
+										int EnemyType = 0;
+										EnemyType = AttackType.Next(0, 50);
+										if (EnemyType > 25)
+										{
+											Console.WriteLine("The Animated Dummy raises it wooden sword and attacks");
+											EnemyAtk = "Phy";
+										}
+										else if (EnemyType <= 25)
+										{
+											Console.WriteLine("The Animated Dummy points its sword toward you and chants a spell");
+											EnemyAtk = "Mag";
+											int AtkElem = 0;
+											AtkElem = AttackType.Next(0, 50);
+											if (AtkElem <= 10)
+											{
+												atkElem = "Fire";
+											}
+											else if (AtkElem <= 20 && AtkElem > 10)
+											{
+												atkElem = "Pure";
+											}
+											else if (AtkElem <= 30 && AtkElem > 20)
+											{
+												atkElem = "Storm";
+											}
+											else if (AtkElem <= 40 && AtkElem > 30)
+											{
+												atkElem = "Shadow";
+											}
+											else if (AtkElem <= 50 && AtkElem > 40)
+											{
+												atkElem = "Earth";
+											}
+										}
 										if (Hp < 10)
 										{
 											HitStorage = Accurite.Next(0, 200);
@@ -2200,15 +2265,30 @@ namespace Shadow_Warriors
 										}
 										if (Hit == true)
 										{
-											if (EquipedArmourStatsEffectName == "Incompassing Shadows")
+											if (EquipedArmourStatsEffectName == "Incompassing Shadows" && atkElem != "Pure")
 											{
 												ExtraDef = .04;
 											}
-											Hp = Convert.ToInt32(Hp - (40 * ((EquipedArmourStatsPhyDef / 100) + ExtraDef)));
+											if (EnemyAtk == "Phy")
+											{
+												Hp = Convert.ToInt32(Hp - (40 * ((EquipedArmourStatsPhyDef / 100) + ExtraDef)));
+											}
+											else if (EnemyAtk == "Mag")
+											{
+												Hp = Convert.ToInt32(Hp - (40 * ((EquipedArmourStatsMagDef / 100) + ExtraDef)));
+											}
 											if (EquipedArmourStatsEffectName == "Altered Armour")
 											{
-												EquipedArmourStatsPhyDef = EquipedArmourStatsPhyDef - 1;
-												PlayerAcc = PlayerAcc + 2;
+												if (EnemyAtk == "Phy")
+												{
+													EquipedArmourStatsPhyDef = EquipedArmourStatsPhyDef - 1;
+													PlayerAcc = PlayerAcc + 2;
+												}
+												else if (EnemyAtk == "Mag")
+												{
+													EquipedArmourStatsPhyDef = EquipedArmourStatsPhyDef + 2;
+													PlayerAcc = PlayerAcc - 3;
+												}
 											}
 										}
 
