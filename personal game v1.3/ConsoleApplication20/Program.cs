@@ -904,11 +904,11 @@ namespace Shadow_Warriors
 							bool item = false;
 							string rightHandWeaponEquiped = "";
 							string rightHandWeaponType = "";
-							int rightHandWeaponStats= 0;
-							string rightHandWeaponStatsExtraEffect= "";
-							int rightHandWeaponStatsExtraNum= 0;
-							int rightHandWeaponStatsDefPhy= 0;
-							int rightHandWeaponStatsDefMag= 0;
+							int rightHandWeaponStats = 0;
+							string rightHandWeaponStatsExtraEffect = "";
+							int rightHandWeaponStatsExtraNum = 0;
+							int rightHandWeaponStatsDefPhy = 0;
+							int rightHandWeaponStatsDefMag = 0;
 							int rightHandWeaponStatsAtkPhy = 0;
 							int rightHandWeaponStatsAtkMag = 0;
 							string leftHandWeaponEquiped = "";
@@ -1227,7 +1227,7 @@ namespace Shadow_Warriors
 							int selection2 = 1;
 							bool menu = false;
 							#region Tutorial
-#region Temp Tutor
+							#region Temp Tutor
 							if (choice == "yes" || choice == "Yes" || choice == "Y" || choice == "y")
 							{
 								Console.ForegroundColor = ConsoleColor.Cyan;
@@ -1485,6 +1485,7 @@ namespace Shadow_Warriors
 								int SoulCounter = 0;
 								int ShatterCount = 0;
 								int HitStorage = 0;
+								int PlayerDamage = 0;
 								double tempHp = maxHp;
 								double EnemyAcc = 50;
 								double PlayerAcc = 60;
@@ -1510,6 +1511,7 @@ namespace Shadow_Warriors
 								string EnemyAtk = "";
 								while (DummyHp > 0 && Hp > 0)
 								{
+									Console.Clear();
 									Console.WriteLine("					Practice Dummy				");
 									Console.BackgroundColor = ConsoleColor.Red;
 									Console.ForegroundColor = ConsoleColor.Red;
@@ -1597,7 +1599,7 @@ namespace Shadow_Warriors
 									}
 									else if (menu == true)
 									{
-										
+
 										if (selection1 == 1)
 										{
 
@@ -2136,7 +2138,7 @@ namespace Shadow_Warriors
 														Damage = Damage + 3;
 														PotionCloak = false;
 													}
-													
+
 													Something = true;
 												}
 												else if (selection1 == 3)
@@ -2214,6 +2216,7 @@ namespace Shadow_Warriors
 									}
 									if (Something == true)
 									{
+										int tempPlayHp = 0;
 										string atkElem = "";
 										int EnemyType = 0;
 										EnemyType = AttackType.Next(0, 50);
@@ -2265,10 +2268,24 @@ namespace Shadow_Warriors
 										}
 										if (Hit == true)
 										{
-											if (EquipedArmourStatsEffectName == "Incompassing Shadows" && atkElem != "Pure")
+											if (EquipedArmourStatsEffectName == "Incompassing Shadows" && atkElem != "Pure" && EnemyAtk == "Phy")
 											{
 												ExtraDef = .04;
 											}
+											if (EquipedArmourStatsEffectName == "Blazen Ash" && atkElem == "Fire" && Ignite == false)
+											{
+												Ignite = true;
+												ExtraDef = ExtraDef + .15;
+											}
+											else if (EquipedArmourStatsEffectName == "Blazen Ash" && Ignite == false)
+											{
+												ExtraDef = ExtraDef + .10;
+											}
+											else if (EquipedArmourStatsEffectName == "Blazen Ash" && Ignite == true)
+											{
+												ExtraDef = ExtraDef + .05;
+											}
+											tempPlayHp = Hp;
 											if (EnemyAtk == "Phy")
 											{
 												Hp = Convert.ToInt32(Hp - (40 * ((EquipedArmourStatsPhyDef / 100) + ExtraDef)));
@@ -2290,12 +2307,43 @@ namespace Shadow_Warriors
 													PlayerAcc = PlayerAcc - 3;
 												}
 											}
+											Thread.Sleep(3000);
+											if (EnemyAtk == "Mag" && atkElem == "Fire")
+											{
+												Console.WriteLine("the Dummy cast Blazing Heat");
+											}
+											else if (EnemyAtk == "Mag" && atkElem == "Pure")
+											{
+												Console.WriteLine("the dummy cast Purifying Light");
+											}
+											else if (EnemyAtk == "Mag" && atkElem == "Storm")
+											{
+												Console.WriteLine("the dummy cast Storm Spark");
+											}
+											else if (EnemyAtk == "Mag" && atkElem == "Shadow")
+											{
+												Console.WriteLine("the dummy cast Shadow Arrow");
+											}
+											else if (EnemyAtk == "Mag" && atkElem == "Earth")
+											{
+												Console.WriteLine("the dummy cast Bolder Dash");
+											}
+											Console.WriteLine();
+											Thread.Sleep(4000);
+											if ((tempPlayHp - Hp) > 0)
+											{
+												Console.WriteLine("You take " + (tempPlayHp - Hp) + " damage from the attack");
+											}
+											else
+											{
+												Console.WriteLine("You take 0 damage from the attack");
+											}
 										}
 
 									}
 								}
+								#endregion
 							}
-							#endregion
 						}
 					}
 					#endregion
